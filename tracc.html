@@ -269,7 +269,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM San
 .np-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:1px}
 .np-close-view{background:none;border:none;color:var(--text2);font-size:14px;font-weight:600;cursor:pointer}
 .np-save-send{background:#1c1b1b;color:#fff;border:none;border-radius:13px;padding:15px 26px;font-size:14px;font-weight:700;cursor:pointer}
-.gd-box{max-width:720px;width:100%;padding:34px 36px 28px;position:relative;box-sizing:border-box}
+.gd-box{max-width:720px;width:100%;padding:40px 42px 26px;position:relative;box-sizing:border-box;background:var(--bg);border:none;border-radius:28px}
 .gd-close{position:absolute;top:20px;right:22px;width:30px;height:30px;border-radius:9px;border:none;background:none;cursor:pointer;color:var(--text3);font-size:17px}
 .gd-title-main{font-family:'DM Sans',sans-serif;font-size:30px;font-weight:700;color:var(--text);letter-spacing:-.8px;text-align:center}
 .gd-sub{font-size:14px;color:var(--text2);max-width:480px;margin:10px auto 22px;line-height:1.5;text-align:center}
@@ -280,15 +280,229 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM San
 .gd-num.on{background:var(--green);border-color:var(--green);color:#fff}
 .gd-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:620px){.gd-cards{grid-template-columns:1fr}}
-.gd-card{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px 22px;display:flex;flex-direction:column}
+.gd-card{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:28px 26px 24px;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .gd-reco{position:absolute;top:16px;right:16px;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text3);background:var(--bg3);padding:4px 9px;border-radius:999px}
-.gd-ico{margin-bottom:14px}
+.gd-ico{margin-bottom:16px;position:relative;display:inline-block;align-self:flex-start;line-height:0}
+.gd-badge{position:absolute;right:-3px;bottom:-1px;width:15px;height:15px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--bg2)}
 .gd-ctitle{font-size:18px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.2}
 .gd-desc{font-size:13px;color:var(--text2);line-height:1.55;margin-bottom:16px;flex:1}
-.gd-bullet{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#b45309;margin-bottom:16px}
-.gd-bullet span{width:6px;height:6px;border-radius:50%;background:#b45309;flex-shrink:0}
+.gd-bullet{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:16px}
+.gd-bullet span{width:6px;height:6px;border-radius:50%;background:#c2410c;flex-shrink:0}
 .gd-btn{border:none;border-radius:12px;padding:14px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;width:100%;margin-top:auto}
 .gd-foot{font-size:12px;color:var(--text3);margin-top:22px;display:flex;align-items:center;justify-content:center;gap:7px;text-align:center}
+/* ── Plan de Entrenamiento Detallado (vista entreno) ── */
+.ept-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ept-title{font-family:'DM Serif Display',serif;font-size:30px;line-height:1.05;color:var(--text)}
+.ept-sub{font-size:13.5px;color:var(--text2);margin-top:6px}
+.ept-headbtn{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:8px 18px;border:1.5px solid var(--border);border-radius:14px;background:var(--bg2);color:var(--text);font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;line-height:1.15;text-align:left}
+.ept-toolbtn{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 11px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;background:var(--bg2);color:var(--text2);font-size:11.5px;font-weight:600;font-family:'DM Sans',sans-serif}
+.ept-hr{height:1px;background:var(--border);margin:18px 0}
+.ept-secrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.ept-seclbl{display:inline-flex;align-items:center;gap:12px}
+.ept-secttl{font-family:'DM Serif Display',serif;font-size:20px;color:var(--text)}
+.ept-editsplit{display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:var(--text2);font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.ept-week{font-size:11.5px;font-weight:600;color:var(--text3);letter-spacing:.04em;text-transform:uppercase}
+.ept-days{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+@media(max-width:780px){.ept-days{grid-template-columns:repeat(4,1fr)}}
+.ept-day{background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:13px 6px;text-align:center;transition:transform .12s,box-shadow .12s}
+.ept-day.off{background:var(--bg3)}
+.ept-day.sel{border-color:var(--text);box-shadow:0 2px 9px rgba(0,0,0,.07)}
+.ept-day-dow{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3)}
+.ept-day-name{font-size:14px;font-weight:700;color:var(--text);margin-top:6px;line-height:1.15}
+.ept-day.off .ept-day-name{color:var(--text3)}
+.ept-day-tag{font-family:'Geist Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.1em;color:var(--green);margin-top:6px}
+.ept-exhead{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-bottom:16px}
+.ept-exh-ttl{font-family:'DM Serif Display',serif;font-size:20px;color:var(--text)}
+.ept-pill{background:var(--gm);color:#0a3d1c;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.ept-genai{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 17px;border:none;border-radius:11px;background:#1c1b1b;color:#fff;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;cursor:pointer}
+.ept-addex{display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;color:var(--text2);font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif}
+.ept-grid{display:grid;grid-template-columns:1fr 330px;gap:20px;align-items:start}
+@media(max-width:920px){.ept-grid{grid-template-columns:1fr}}
+.ept-card{display:flex;align-items:center;gap:16px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:15px 17px;margin-bottom:13px}
+.ept-thumb{width:72px;height:58px;border-radius:11px;background:#1c1b1b;flex-shrink:0;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.ept-thumb-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff}
+.ept-muscle{font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text3);line-height:1.25}
+.ept-exname{font-size:15.5px;font-weight:600;color:var(--text);margin-top:3px;line-height:1.2}
+.ept-stat-lbl{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3)}
+.ept-stat-val{font-family:'Geist Mono',monospace;font-size:18px;font-weight:600;color:var(--text);margin-top:4px;line-height:1}
+.ept-iconbtn{background:none;border:none;cursor:pointer;color:var(--text3);padding:4px;display:flex;align-items:center}
+.ept-iconbtn:hover{color:var(--text)}
+.ept-side{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px}
+.ept-side-ttl{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:var(--text);margin-bottom:7px}
+.ept-side-sub{font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:16px}
+.ept-side-lbl{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3);margin-bottom:7px}
+.ept-select{width:100%;box-sizing:border-box;height:42px;border:1.5px solid var(--border);border-radius:11px;background:var(--bg2);color:var(--text);font-size:13.5px;padding:0 12px;margin-bottom:16px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.ept-side-btn{width:100%;height:46px;border:none;border-radius:12px;background:#1c1b1b;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+/* ── Modal Configurar Split (Image 3) ── */
+.csp-box{max-width:640px;width:100%;display:flex;flex-direction:column;max-height:88vh;padding:0}
+.csp-head{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid var(--border)}
+.csp-ttl{font-family:'DM Serif Display',serif;font-size:23px;color:var(--text)}
+.csp-x{background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px;width:30px;height:30px}
+.csp-body{padding:22px 26px;overflow:auto}
+.csp-lens{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.csp-len{min-width:66px;height:58px;border-radius:16px;border:1.5px solid var(--border);background:var(--bg2);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif}
+.csp-len.on{border-color:var(--text);background:var(--bg3)}
+.csp-len b{font-size:17px;font-weight:700;color:var(--text);line-height:1}
+.csp-len span{font-size:11px;color:var(--text3);margin-top:3px}
+.csp-len.add{font-size:22px;color:var(--text2)}
+.csp-seclbl{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:12px}
+.csp-row{display:flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:10px 14px;margin-bottom:9px}
+.csp-row.off{background:var(--bg3);opacity:.9}
+.csp-badge{width:46px;height:46px;border-radius:12px;background:#1c1b1b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.csp-row.off .csp-badge{background:var(--bg2);color:var(--text3);border:1.5px solid var(--border)}
+.csp-sel{flex:1;height:40px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg2);color:var(--text);font-size:14px;padding:0 12px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.csp-row.off .csp-sel{color:var(--text3)}
+.csp-foot{display:flex;align-items:center;justify-content:flex-end;gap:14px;padding:18px 26px;border-top:1px solid var(--border);background:var(--bg)}
+.csp-cancel{background:none;border:none;cursor:pointer;color:var(--text2);font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
+.csp-save{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 22px;border:none;border-radius:13px;background:#1c1b1b;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+/* ── Modal Add Exercise (Image 4) ── */
+.modal-box.aex-box{max-width:1040px;width:100%;display:flex;flex-direction:row;padding:0;max-height:90vh;overflow:hidden;position:relative}
+@media(max-width:860px){.modal-box.aex-box{flex-direction:column}.aex-right{width:auto!important;border-left:none!important;border-top:1px solid var(--border)}.aex-left{border-right:none!important}}
+.aex-x{position:absolute;top:18px;right:20px;background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px;z-index:3}
+.aex-left{flex:1;min-width:0;display:flex;flex-direction:column;border-right:1px solid var(--border)}
+.aex-lhead{padding:24px 24px 0}
+.aex-ttl{font-family:'DM Serif Display',serif;font-size:24px;color:var(--text);margin-bottom:16px}
+.aex-srch{position:relative}
+.aex-srch svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text3)}
+.aex-search{width:100%;box-sizing:border-box;height:44px;border:1.5px solid var(--border);border-radius:12px;background:var(--bg);padding:0 14px 0 40px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text)}
+.aex-tabs{display:flex;gap:22px;border-bottom:1px solid var(--border);margin-top:16px}
+.aex-tab{background:none;border:none;cursor:pointer;padding:11px 0;font-size:13.5px;font-weight:600;color:var(--text3);border-bottom:2px solid transparent;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:6px}
+.aex-tab.on{color:var(--text);border-bottom-color:var(--text)}
+.aex-chips{display:flex;gap:8px;flex-wrap:wrap;padding:14px 24px 4px}
+.aex-chip{font-size:12px;font-weight:600;border:none;border-radius:999px;padding:7px 14px;cursor:pointer;background:var(--bg3);color:var(--text2);font-family:'DM Sans',sans-serif}
+.aex-chip.on{background:#1c1b1b;color:#fff}
+.aex-list{flex:1;overflow:auto;padding:8px 18px 20px;min-height:240px}
+.aex-li{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;cursor:pointer;border:1.5px solid transparent}
+.aex-li:hover{background:var(--bg3)}
+.aex-li.sel{background:var(--gl);border-color:var(--green)}
+.aex-li-th{width:42px;height:42px;border-radius:9px;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text3)}
+.aex-li-name{font-size:14px;font-weight:700;color:var(--text)}
+.aex-li-mg{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.03em;margin-top:1px}
+.aex-li-plus{margin-left:auto;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg2);color:var(--text2);cursor:pointer;flex-shrink:0}
+.aex-right{width:362px;flex-shrink:0;display:flex;flex-direction:column;background:var(--bg)}
+.aex-rbody{flex:1;overflow:auto;padding:24px}
+.aex-seclbl{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin:0 0 11px}
+.aex-detail{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:24px}
+.aex-detail b{font-size:15.5px;font-weight:700;color:var(--text)}
+.aex-detail p{font-size:12.5px;color:var(--text2);line-height:1.5;margin:6px 0 0}
+.aex-prow{margin-bottom:20px}
+.aex-prow-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.aex-plabel{font-size:14px;font-weight:600;color:var(--text)}
+.aex-pval{font-family:'Geist Mono',monospace;font-size:15px;font-weight:600;color:var(--text)}
+.aex-step{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:10px;overflow:hidden}
+.aex-step button{width:34px;height:34px;border:none;background:var(--bg2);cursor:pointer;font-size:16px;color:var(--text2)}
+.aex-step b{min-width:34px;text-align:center;font-family:'Geist Mono',monospace;font-size:15px;color:var(--text)}
+.aex-rest{display:flex;gap:8px}
+.aex-rest button{flex:1;height:38px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg2);cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);font-family:'DM Sans',sans-serif}
+.aex-rest button.on{border-color:var(--green);color:var(--green);background:var(--gl)}
+.aex-rpe{width:100%;box-sizing:border-box;height:42px;border:1.5px solid var(--border);border-radius:11px;background:var(--bg2);padding:0 12px;font-size:13.5px;font-family:'DM Sans',sans-serif;color:var(--text);cursor:pointer}
+.aex-foot{display:flex;gap:12px;padding:16px 24px;border-top:1px solid var(--border)}
+.aex-cancel{flex:1;height:46px;border:1.5px solid var(--border);border-radius:12px;background:var(--bg2);cursor:pointer;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--text)}
+.aex-add{flex:1;height:46px;border:none;border-radius:12px;background:#1c1b1b;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.aex-add:disabled{opacity:.35;cursor:default}
+.aex-rng{position:relative;height:30px;margin-top:8px}
+.aex-rng-track{position:absolute;top:13px;left:0;right:0;height:4px;border-radius:2px;background:var(--bg3)}
+.aex-rng-fill{position:absolute;top:13px;height:4px;border-radius:2px;background:var(--green)}
+.aex-rng input{position:absolute;top:0;left:0;width:100%;-webkit-appearance:none;appearance:none;background:none;pointer-events:none;height:30px;margin:0}
+.aex-rng input::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--green);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.aex-rng input::-moz-range-thumb{pointer-events:auto;width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--green);cursor:pointer}
+/* ── Drawer Edit Exercise (Image 5) ── */
+.modal-box.eex-box{width:560px;max-width:94vw;height:100vh;max-height:100vh;border-radius:0;padding:0;display:flex;flex-direction:column;box-shadow:-16px 0 50px rgba(0,0,0,.18)}
+.eex-head{display:flex;align-items:flex-start;justify-content:space-between;padding:26px 28px 18px;border-bottom:1px solid var(--border)}
+.eex-ttl{font-family:'DM Serif Display',serif;font-size:26px;color:var(--text);line-height:1.05}
+.eex-sub{font-size:13.5px;color:var(--text2);margin-top:4px}
+.eex-x{background:none;border:none;cursor:pointer;color:var(--text3);font-size:19px}
+.eex-body{flex:1;overflow:auto;padding:24px 28px}
+.eex-seclbl{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:12px}
+.eex-params{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:22px}
+.eex-field label{display:block;font-size:12.5px;font-weight:600;color:var(--text2);margin-bottom:6px}
+.eex-input{width:100%;box-sizing:border-box;height:46px;border:1.5px solid var(--border);border-radius:12px;background:var(--bg2);padding:0 14px;font-size:15px;font-family:'Geist Mono',monospace;color:var(--text)}
+.eex-notes{width:100%;box-sizing:border-box;min-height:76px;border:1.5px solid var(--border);border-radius:12px;background:var(--bg2);padding:11px 14px;font-size:13.5px;font-family:'DM Sans',sans-serif;color:var(--text);resize:vertical;line-height:1.5}
+.eex-change-head{display:flex;align-items:center;justify-content:space-between;margin:26px 0 12px}
+.eex-tag{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text2);background:var(--bg3);padding:5px 10px;border-radius:7px}
+.eex-srch{position:relative;margin-bottom:14px}
+.eex-srch svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text3)}
+.eex-search{width:100%;box-sizing:border-box;height:44px;border:1.5px solid var(--border);border-radius:12px;background:var(--bg);padding:0 14px 0 40px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text)}
+.eex-alt{display:flex;align-items:center;gap:14px;border:1.5px solid var(--border);border-radius:14px;padding:10px 13px;margin-bottom:10px;cursor:pointer}
+.eex-alt:hover{border-color:var(--text2);background:var(--bg3)}
+.eex-alt-th{width:46px;height:46px;border-radius:10px;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text3)}
+.eex-alt-name{font-size:14.5px;font-weight:700;color:var(--text)}
+.eex-alt-mg{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.eex-foot{display:flex;gap:14px;padding:18px 28px;border-top:1px solid var(--border)}
+.eex-discard{flex:1;height:50px;border:1.5px solid var(--border);border-radius:13px;background:var(--bg2);cursor:pointer;font-size:14.5px;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--text)}
+.eex-apply{flex:1;height:50px;border:none;border-radius:13px;background:#1c1b1b;color:#fff;font-size:14.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+/* ── Modal Biblioteca de Ejercicios (Image 2) ── */
+.modal-box.bex-box{max-width:1080px;width:100%;display:flex;flex-direction:column;max-height:90vh;padding:0;overflow:hidden}
+.bex-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 28px 0}
+.bex-ttl{font-family:'DM Serif Display',serif;font-size:25px;color:var(--text)}
+.bex-sub{font-size:13.5px;color:var(--text2);margin-top:5px}
+.bex-imp{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:1.5px solid var(--border);border-radius:12px;background:var(--bg2);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.bex-x{background:none;border:none;cursor:pointer;color:var(--text3);font-size:19px}
+.bex-toolbar{display:flex;align-items:center;gap:16px;padding:18px 28px 0;flex-wrap:wrap}
+.bex-srch{position:relative;flex:1;min-width:240px}
+.bex-srch svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3)}
+.bex-search{width:100%;box-sizing:border-box;height:46px;border:1.5px solid var(--border);border-radius:13px;background:var(--bg);padding:0 14px 0 42px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text)}
+.bex-view{display:flex;align-items:center;gap:8px}
+.bex-view-lbl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3)}
+.bex-seg{display:flex;background:var(--bg3);border-radius:10px;padding:3px}
+.bex-seg button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:600;color:var(--text3);padding:6px 14px;border-radius:8px;font-family:'DM Sans',sans-serif}
+.bex-seg button.on{background:var(--bg2);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.bex-filters{padding:16px 28px;border-bottom:1px solid var(--border)}
+.bex-frow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bex-flbl{font-size:12px;color:var(--text2);min-width:64px}
+.bex-chip{font-size:12px;font-weight:600;border:1.5px solid var(--border);border-radius:999px;padding:6px 13px;cursor:pointer;background:var(--bg2);color:var(--text2);font-family:'DM Sans',sans-serif}
+.bex-chip.on{border-color:var(--green);color:var(--green);background:var(--gl)}
+.bex-body{flex:1;overflow:auto;padding:20px 28px}
+.bex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:820px){.bex-grid{grid-template-columns:repeat(2,1fr)}}
+.bex-card{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2)}
+.bex-img{height:148px;background:var(--bg3);position:relative;display:flex;align-items:center;justify-content:center;color:var(--border2)}
+.bex-tag{position:absolute;top:12px;left:12px;background:#1c1b1b;color:#fff;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:7px}
+.bex-cbody{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px}
+.bex-cname{font-size:15px;font-weight:700;color:var(--text)}
+.bex-csub{font-size:12px;color:var(--text3);margin-top:2px}
+.bex-add{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg2);color:var(--text2);cursor:pointer;flex-shrink:0;font-size:17px;display:flex;align-items:center;justify-content:center}
+.bex-add.on{background:var(--green);border-color:var(--green);color:#fff}
+.bex-li2{display:flex;align-items:center;gap:14px;padding:11px 6px;border-bottom:1px solid var(--border)}
+.bex-li2-th{width:48px;height:48px;border-radius:10px;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text3)}
+.bex-foot{display:flex;align-items:center;gap:16px;padding:16px 28px;border-top:1px solid var(--border);background:var(--bg)}
+.bex-foot-info{flex:1;font-size:12.5px;color:var(--text3);display:flex;align-items:center;gap:8px}
+.bex-close{background:none;border:none;cursor:pointer;color:var(--text2);font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
+.bex-fin{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 22px;border:none;border-radius:13px;background:#1c1b1b;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+/* ── Modal Generar Rutina con IA (Image 6) ── */
+.modal-box.gri-box{max-width:680px;width:100%;display:flex;flex-direction:column;max-height:90vh;padding:0;overflow:hidden}
+.gri-head{padding:26px 28px 0}
+.gri-ttl{font-family:'DM Serif Display',serif;font-size:23px;color:var(--text)}
+.gri-sub{font-size:13.5px;color:var(--text2);margin-top:5px}
+.gri-body{flex:1;overflow:auto;padding:20px 28px}
+.gri-opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px}
+.gri-opt{border:1.5px solid var(--border);border-radius:16px;padding:18px;cursor:pointer;background:var(--bg2);position:relative}
+.gri-opt.on{border-color:var(--green);box-shadow:0 0 0 3px var(--gl)}
+.gri-opt-ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:var(--bg3);color:var(--text3)}
+.gri-opt.on .gri-opt-ico{background:var(--gm);color:#0a3d1c}
+.gri-opt-badge{position:absolute;top:18px;right:18px;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--green)}
+.gri-opt-ttl{font-family:'DM Serif Display',serif;font-size:16px;color:var(--text);margin-bottom:6px}
+.gri-opt-desc{font-size:12.5px;color:var(--text2);line-height:1.45}
+.gri-seclbl{font-size:13.5px;font-weight:600;color:var(--text2);margin:22px 0 12px}
+.gri-ses{display:flex;gap:10px;flex-wrap:wrap}
+.gri-sescheck{display:inline-flex;align-items:center;gap:9px;border:1.5px solid var(--border);border-radius:11px;padding:9px 14px;cursor:pointer;font-size:13.5px;font-weight:600;color:var(--text);background:var(--bg2)}
+.gri-cbox{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;color:#fff}
+.gri-sescheck.on .gri-cbox{background:#1c1b1b;border-color:#1c1b1b}
+.gri-sescard{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:15px 18px;margin-bottom:14px}
+.gri-sescard-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.gri-sescard-ttl{font-family:'DM Serif Display',serif;font-size:16px;color:var(--text)}
+.gri-sescard-n{font-size:12px;color:var(--text3)}
+.gri-grp{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin-bottom:9px}
+.gri-grp-name{font-size:14px;font-weight:600;color:var(--text)}
+.gri-step{display:flex;align-items:center;gap:12px}
+.gri-step button{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg2);cursor:pointer;color:var(--text2);font-size:15px;display:flex;align-items:center;justify-content:center}
+.gri-step b{min-width:16px;text-align:center;font-family:'Geist Mono',monospace;font-size:15px;color:var(--text)}
+.gri-addgrp{display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;color:var(--text2);font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;margin-top:2px}
+.gri-foot{display:flex;align-items:center;gap:16px;padding:14px 28px;border-top:1px solid var(--border);background:var(--bg)}
+.gri-quote{flex:1;display:flex;align-items:center;gap:10px;font-size:12px;font-style:italic;color:var(--text3);line-height:1.4}
+.gri-quote-av{width:30px;height:30px;border-radius:50%;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text3)}
+.gri-cancel{background:none;border:none;cursor:pointer;color:var(--text2);font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
+.gri-confirm{height:46px;padding:0 22px;border:none;border-radius:13px;background:#1c1b1b;color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
 .bib-item{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--border)}
 .bib-add{width:34px;height:34px;border-radius:50%;background:#1c1b1b;color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 .cr-opts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
@@ -14422,34 +14636,32 @@ function seccionPlanEntreno(c){
           </div>
         </div>`;
     } else {
-      // ── Modo lectura: filas con badge de día de color ──
+      // ── Modo lectura: tarjetas de día (estilo "Split Semanal") ──
+      const DOW = ['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'];
+      const meso = c._mesocycle || {};
+      const semNum = meso.current_week || meso.week_number || null;
+      const semTot = meso.total_weeks || meso.weeks || null;
+      const weekBadge = (semNum && semTot) ? `<span class="ept-week">Semana ${semNum} de ${semTot}</span>` : '';
       splitHtml = `
-        <div style="margin-bottom:16px">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
-            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3)">Distribución del split</div>
-            <button onclick="editarSplit()" style="
-              height:28px;padding:0 13px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;
-              background:var(--bg2);color:var(--text2);font-size:12px;font-weight:600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Editar</button>
+        <div style="margin-bottom:4px">
+          <div class="ept-secrow">
+            <div class="ept-seclbl">
+              <span class="ept-secttl">Split Semanal</span>
+              <button class="ept-editsplit" onclick="abrirConfigSplitModal()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Editar Split</button>
+            </div>
+            ${weekBadge}
           </div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <div class="ept-days">
             ${split.map((s,i) => {
               const off = !s || s === 'OFF';
-              // El color del cuadrado se basa en el tipo BASE
-              // ("PUSH 2" tiene el color de "PUSH").
-              const col = colorSesion(off ? 'OFF' : tipoBase(s));
-              // Halo solo en el cuadrado que el usuario ha pulsado (por índice del día,
-              // no por nombre — si el tipo se repite, solo se resalta el clicado).
               const isActiveDay = !off && splitDayActivo === i;
-              const cursor = off ? 'default' : 'pointer';
-              const ringStyle = isActiveDay
-                ? 'border:2px solid '+col+';box-shadow:0 0 0 3px '+col+'22'
-                : 'border:1.5px solid var(--border)';
-              const onclick = off ? '' : `onclick="seleccionarSesionPorTipo('${escHtml(s)}',${i})"`;
-              const title = off ? 'Día de descanso' : 'Ver ejercicios de '+escHtml(s);
-              return `<div ${onclick} title="${title}" style="flex:1;min-width:62px;background:var(--bg2);${ringStyle};border-radius:10px;padding:9px 4px;text-align:center;cursor:${cursor};transition:transform .12s, box-shadow .12s" ${off?'':`onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform=''"`}>
-                <div style="width:24px;height:24px;border-radius:6px;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;
-                  font-size:10px;font-weight:700;color:#fff;background:${col}">D${i+1}</div>
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;color:${off?'var(--text3)':col}">${off?'Descanso':escHtml(s)}</div>
+              const dow = split.length === 7 ? DOW[i] : ('D' + (i + 1));
+              const onclick = off ? '' : `onclick="seleccionarSesionPorTipo('${escHtml(s)}',${i})" style="cursor:pointer" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform=''"`;
+              const title = off ? 'Día de descanso' : 'Ver ejercicios de ' + escHtml(s);
+              return `<div class="ept-day${off ? ' off' : ''}${isActiveDay ? ' sel' : ''}" title="${title}" ${onclick}>
+                <div class="ept-day-dow">${dow}</div>
+                <div class="ept-day-name">${off ? 'Rest' : escHtml(s)}</div>
+                ${isActiveDay ? '<div class="ept-day-tag">ACTIVO</div>' : ''}
               </div>`;
             }).join('')}
           </div>
@@ -14465,7 +14677,7 @@ function seccionPlanEntreno(c){
         <div style="background:var(--bg);border:1.5px dashed var(--border2);border-radius:12px;padding:18px 16px;text-align:center">
           <div style="font-size:13px;font-weight:600;color:var(--text2);margin-bottom:4px">Este cliente aún no tiene split configurado</div>
           <div style="font-size:11.5px;color:var(--text3);line-height:1.5;margin-bottom:12px">El split define qué sesión toca cada día de la semana (ej. Lun Push · Mar Pull · Mié descanso…).</div>
-          <button onclick="editarSplit()" style="height:32px;padding:0 16px;border:none;border-radius:8px;cursor:pointer;background:var(--green);color:#fff;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif">+ Configurar split</button>
+          <button onclick="abrirConfigSplitModal()" style="height:32px;padding:0 16px;border:none;border-radius:8px;cursor:pointer;background:var(--green);color:#fff;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif">+ Configurar split</button>
         </div>
       </div>`;
   }
@@ -14541,116 +14753,97 @@ function seccionPlanEntreno(c){
         </div>`;
       }
 
-      // ── Fila en modo lectura ──
-      const botonEditar = ej.id
-        ? `<button onclick="editarEjercicio('${escHtml(ej.id)}')" title="Editar" style="
-            background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;flex-shrink:0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>`
-        : '';
-      // Flechas para reordenar y botón de quitar (Bloque 6D)
-      const flechas = ej.id ? `
-        <div style="display:flex;flex-direction:column;flex-shrink:0">
-          <button onclick="moverEjercicio('${escHtml(ej.id)}',-1)" title="Subir" ${idx===0?'disabled':''} style="
-            background:none;border:none;cursor:${idx===0?'default':'pointer'};font-size:10px;padding:0 3px;
-            color:${idx===0?'var(--border2)':'var(--text2)'};line-height:1.1">▲</button>
-          <button onclick="moverEjercicio('${escHtml(ej.id)}',1)" title="Bajar" ${idx===lista.length-1?'disabled':''} style="
-            background:none;border:none;cursor:${idx===lista.length-1?'default':'pointer'};font-size:10px;padding:0 3px;
-            color:${idx===lista.length-1?'var(--border2)':'var(--text2)'};line-height:1.1">▼</button>
+      // ── Fila en modo lectura (tarjeta estilo mockup) ──
+      const vid = ej.video_url ? escHtml(ej.video_url) : '';
+      const thumb = `<div class="ept-thumb"${vid ? ` onclick="window.open('${vid}','_blank')" style="cursor:pointer"` : ''}>${vid ? '<div class="ept-thumb-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg></div>' : ''}</div>`;
+      const setsVal = (ej.sets != null && ej.sets !== '') ? String(ej.sets).padStart(2, '0') : '—';
+      const muscle = (ej.muscle_group || ej.session_type || '').toString().toUpperCase();
+      const accionesEj = ej.id ? `
+        <div style="display:flex;align-items:center;gap:2px;flex-shrink:0">
+          <button class="ept-iconbtn" onclick="abrirEditExerciseDrawer('${escHtml(ej.id)}')" title="Editar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
+          <button class="ept-iconbtn" style="color:var(--red)" onclick="quitarEjercicio('${escHtml(ej.id)}')" title="Quitar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          <button class="ept-iconbtn" onclick="pegarLinkVideo('${escHtml(ej.id)}')" title="${ej.video_url ? 'Editar vídeo' : 'Añadir vídeo'}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button>
         </div>` : '';
-      const botonQuitar = ej.id
-        ? `<button onclick="quitarEjercicio('${escHtml(ej.id)}')" title="Quitar" style="
-            background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;flex-shrink:0;color:var(--red)">✕</button>`
-        : '';
-      return `<div style="background:var(--bg);border-radius:11px;padding:12px 14px;margin-bottom:7px">
-        <div style="display:flex;align-items:flex-start;gap:10px">
-          ${numero}
-          <div style="flex:1;min-width:0">
-            <div style="font-size:13.5px;font-weight:700;color:var(--text)">${escHtml(ej.name||'Ejercicio')}</div>
-            <div style="font-size:12px;color:var(--text2);margin-top:3px;display:flex;flex-wrap:wrap;gap:12px">
-              <span><span style="opacity:.6">Series:</span> ${ej.sets ?? '—'}</span>
-              <span><span style="opacity:.6">Reps:</span> ${escHtml(ej.reps || '—')}</span>
-              <span><span style="opacity:.6">Descanso:</span> ${fmtDescanso(ej.rest_sec)}</span>
-              ${ej.approx != null ? `<span><span style="opacity:.6">Aprox.:</span> ${ej.approx}</span>` : ''}
-            </div>
-          </div>
-          ${ej.video_url
-            ? `<div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-                <a href="${escHtml(ej.video_url)}" target="_blank" rel="noopener" style="font-size:12px;color:var(--green);text-decoration:none;white-space:nowrap;font-weight:600">▶ Ver vídeo</a>
-                <button onclick="pegarLinkVideo('${escHtml(ej.id)}')" title="Editar el link del vídeo" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:12px;padding:2px 4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
-              </div>`
-            : `<button onclick="pegarLinkVideo('${escHtml(ej.id)}')" title="Añadir link de vídeo (YouTube/Vimeo)" style="font-size:11.5px;color:var(--text3);background:var(--bg);border:1.5px dashed var(--border2);border-radius:6px;padding:3px 9px;cursor:pointer;white-space:nowrap;flex-shrink:0;font-family:'DM Sans',sans-serif"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg> Pegar link</button>`}
-          ${flechas}
-          ${botonEditar}
-          ${botonQuitar}
+      return `<div class="ept-card">
+        ${thumb}
+        <div style="flex:1;min-width:0">
+          <div class="ept-muscle">${muscle ? escHtml(muscle) : '&nbsp;'}</div>
+          <div class="ept-exname">${escHtml(ej.name || 'Ejercicio')}</div>
         </div>
+        <div style="text-align:center;min-width:44px"><div class="ept-stat-lbl">Series</div><div class="ept-stat-val">${setsVal}</div></div>
+        <div style="text-align:center;min-width:52px"><div class="ept-stat-lbl">Reps</div><div class="ept-stat-val" style="font-size:16px">${escHtml(ej.reps || '—')}</div></div>
+        <div style="text-align:center;min-width:84px"><div class="ept-stat-lbl">Rest / RPE</div><div class="ept-stat-val" style="font-size:13.5px">${fmtDescanso(ej.rest_sec)} / —</div></div>
+        ${accionesEj}
       </div>`;
     }).join('');
 
+    const focus = [...new Set(lista.map(e => (e.muscle_group || '').toString().trim()).filter(Boolean))]
+      .slice(0, 2).join(' & ').toUpperCase();
+    const exVacio = `<div style="background:var(--bg);border:1.5px dashed var(--border2);border-radius:14px;padding:26px 18px;text-align:center;color:var(--text3);font-size:13px;line-height:1.6">
+        Esta sesión aún no tiene ejercicios.<br>Añádelos desde la <strong style="color:var(--text2)">Librería</strong> de la derecha.</div>`;
     sesionesHtml = `
-      <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px">${pills}</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
-        <span style="font-size:12px;color:var(--text3)">
-          ${lista.length
-            ? `<strong style="color:var(--text2)">${escHtml(tipoSel)}</strong> · ${lista.length} ${lista.length===1?'ejercicio':'ejercicios'}`
-            : `<strong style="color:var(--text2)">${escHtml(tipoSel)}</strong> · sin ejercicios todavía`}
-        </span>
-        ${lista.length ? `<button onclick="guardarSesionComoPlantilla()" style="
-          height:26px;padding:0 11px;border:1.5px solid var(--border);border-radius:7px;cursor:pointer;
-          background:var(--bg2);color:var(--text2);font-size:11px;font-weight:600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar sesión como plantilla</button>` : ''}
+      <div class="ept-exhead">
+        <span class="ept-exh-ttl">Ejercicios: ${escHtml(tipoSel)}</span>
+        ${focus ? `<span class="ept-pill">${escHtml(focus)}</span>` : ''}
+        <button class="ept-genai" onclick="abrirGenerarRutinaIAModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> Generar con IA</button>
+        <button class="ept-addex" onclick="abrirAddExerciseModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg> Añadir ejercicio</button>
+        ${lista.length ? `<button class="ept-addex" style="margin-left:auto" onclick="guardarSesionComoPlantilla()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar como plantilla</button>` : ''}
       </div>
-      ${filas}
-      ${selectorEjercicioHtml(tipoSel)}`;
+      ${lista.length ? filas : exVacio}`;
   }
+
+  // ── Barra lateral: AI Optimizer + Librería ──
+  const tipoSelSide = (tiposSesion && tiposSesion.length) ? tiposSesion[Math.min(editSesionEntreno, tiposSesion.length - 1)] : '';
+  const prioridadOpts = ['Sin prioridad', 'Pecho', 'Espalda', 'Piernas', 'Hombros', 'Brazos', 'Glúteos']
+    .map(o => `<option>${o}</option>`).join('');
+  const sidebarHtml = `
+    <div class="ept-side">
+      <div class="ept-side-ttl"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> AI Optimizer</div>
+      <div class="ept-side-sub">Ajustar volumen e intensidad basado en el feedback histórico del cliente.</div>
+      <div class="ept-side-lbl">Modalidad</div>
+      <select class="ept-select"><option>Mantener Volumen Actual</option><option>Aumentar Volumen</option><option>Reducir Volumen</option><option>Semana de descarga (Deload)</option></select>
+      <div class="ept-side-lbl">Prioridad Muscular</div>
+      <select class="ept-select">${prioridadOpts}</select>
+      <button class="ept-side-btn" onclick="showToast('El optimizador de rutina con IA todavía no está disponible.')">Optimizar Rutina</button>
+    </div>
+    <div id="ept-libreria">${selectorEjercicioHtml(tipoSelSide)}</div>`;
 
   // Badge "Cambia el [fecha]" si hay plan futuro programado
   const schedTrainBadge = c._scheduledTrainingDate
-    ? `<span style="height:22px;padding:0 9px;border-radius:11px;background:#fffbeb;border:1.5px solid #fde68a;font-size:10px;font-weight:700;color:#92400e;display:inline-flex;align-items:center;gap:4px;white-space:nowrap" title="Hay un plan de entreno programado"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Cambia el ${formatearFechaCorta(c._scheduledTrainingDate)}</span>`
+    ? `<span style="height:24px;padding:0 10px;border-radius:11px;background:#fffbeb;border:1.5px solid #fde68a;font-size:11px;font-weight:700;color:#92400e;display:inline-flex;align-items:center;gap:4px;white-space:nowrap" title="Hay un plan de entreno programado"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Cambia el ${formatearFechaCorta(c._scheduledTrainingDate)}</span>`
     : '';
+  const mesoName = (c._mesocycle && c._mesocycle.name) ? c._mesocycle.name : '';
 
-  return `<div style="${cardStyle}">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px">
-      <div style="display:flex;align-items:center;gap:11px;flex-wrap:wrap">
-        <div style="width:36px;height:36px;border-radius:10px;background:var(--gl);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></svg></div>
-        <div style="font-family:'DM Serif Display',serif;font-size:21px;line-height:1.1;color:var(--text)">Plan de entreno</div>
-        <button onclick="abrirMesociclo()" style="
-          height:28px;padding:0 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;
-          background:var(--bg2);color:var(--text2);font-size:12px;font-weight:600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> ${etiquetaBotonMeso(c)}</button>
-        ${(!editandoBorradorPlan && !c._scheduledTrainingDate)
-          ? `<button onclick="abrirModalProgramarCambio('train')" title="Crear un borrador del plan que se activará en una fecha futura" style="
-              height:28px;padding:0 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;
-              background:var(--bg2);color:var(--text2);font-size:12px;font-weight:600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Programar cambio</button>`
-          : ''}
-        ${(!editandoBorradorPlan && c._scheduledTrainingDate)
-          ? `<button onclick="entrarBorradorExistente('train')" title="Editar el borrador programado" style="
-              height:28px;padding:0 12px;border:1.5px solid #fde68a;border-radius:8px;cursor:pointer;
-              background:#fffbeb;color:#92400e;font-size:12px;font-weight:700"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Editar borrador</button>`
-          : ''}
-        ${schedTrainBadge}
+  return `<div style="${cardStyle};padding:24px 26px">
+    <div class="ept-head">
+      <div style="min-width:0">
+        <div class="ept-title">Plan de Entrenamiento Detallado</div>
+        <div class="ept-sub">Cliente: <strong style="color:var(--text);font-weight:700">${escHtml(c.name || '—')}</strong>${mesoName ? ` · ${escHtml(mesoName)}` : ''}</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:13px;align-items:center">
+          <input type="file" id="import-ex-input" accept=".xlsx,.xls,.csv" style="display:none" onchange="importarEjerciciosExcel(this)">
+          <button class="ept-toolbtn" onclick="abrirMesociclo()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> ${etiquetaBotonMeso(c)}</button>
+          ${(!editandoBorradorPlan && !c._scheduledTrainingDate)
+            ? `<button class="ept-toolbtn" onclick="abrirModalProgramarCambio('train')" title="Crear un borrador del plan que se activará en una fecha futura"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Programar cambio</button>` : ''}
+          ${(!editandoBorradorPlan && c._scheduledTrainingDate)
+            ? `<button class="ept-toolbtn" style="border-color:#fde68a;background:#fffbeb;color:#92400e" onclick="entrarBorradorExistente('train')" title="Editar el borrador programado"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Editar borrador</button>` : ''}
+          <button class="ept-toolbtn" onclick="abrirPlantillas()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="4" width="8" height="4" rx="1"/><path d="M8 6H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2"/></svg> Plantillas</button>
+          <button class="ept-toolbtn" onclick="descargarPlantillaEjercicios()" title="Descargar plantilla Excel"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8ZM14 2v6h6"/></svg> Plantilla Excel</button>
+          <button class="ept-toolbtn" onclick="document.getElementById('import-ex-input').click()" title="Importar Excel/CSV"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2Z"/></svg> Importar</button>
+          <button class="ept-toolbtn" onclick="guardarPlanComoPlantilla()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar plan completo</button>
+          ${schedTrainBadge}
+        </div>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-        <span style="font-size:12px;color:var(--text3)">Split ${split.length||'—'} días · ${diasEntreno} ${diasEntreno===1?'sesión':'sesiones'}</span>
-        <input type="file" id="import-ex-input" accept=".xlsx,.xls,.csv" style="display:none" onchange="importarEjerciciosExcel(this)">
-        <button onclick="descargarPlantillaEjercicios()" title="Descargar plantilla Excel con el formato esperado" style="
-          height:28px;padding:0 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;
-          background:var(--bg2);color:var(--text2);font-size:12px;font-weight:600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8ZM14 2v6h6"/></svg> Plantilla</button>
-        <button onclick="document.getElementById('import-ex-input').click()" title="Importar un Excel/CSV con ejercicios" style="
-          height:28px;padding:0 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;
-          background:var(--bg2);color:var(--text2);font-size:12px;font-weight:600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2Z"/></svg> Importar Excel</button>
-        <button onclick="abrirPlantillas()" style="
-          height:28px;padding:0 12px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;
-          background:var(--bg2);color:var(--text2);font-size:12px;font-weight:600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><rect x="8" y="4" width="8" height="4" rx="1"/><path d="M8 6H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2"/></svg> Plantillas</button>
-      </div>
+      <button class="ept-headbtn" onclick="abrirBibliotecaEjerciciosModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11M21 21l-1-1M3 3l1 1M18 22l4-4M2 6l4-4M3 10l7-7M14 21l7-7"/></svg> Biblioteca de<br>Ejercicios</button>
     </div>
     ${panelMesocicloHtml(c)}
     ${panelPlantillasHtml(c)}
+    <div class="ept-hr"></div>
     ${splitHtml}
-    <div style="height:1px;background:var(--border);margin:14px 0"></div>
-    <div data-section="ejercicios-por-sesion" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3)">Ejercicios por sesión</div>
-      <button onclick="guardarPlanComoPlantilla()" style="
-        height:26px;padding:0 11px;border:1.5px solid var(--border);border-radius:7px;cursor:pointer;
-        background:var(--bg2);color:var(--text2);font-size:11px;font-weight:600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar plan completo</button>
+    <div class="ept-hr"></div>
+    <div class="ept-grid">
+      <div data-section="ejercicios-por-sesion" style="min-width:0">${sesionesHtml}</div>
+      <div>${sidebarHtml}</div>
     </div>
-    ${sesionesHtml}
   </div>`;
 }
 
@@ -16832,16 +17025,16 @@ function renderGenDietaModal(){
     <div class="gd-cards">
       <div class="gd-card">
         <span class="gd-reco">Recomendado</span>
-        <div class="gd-ico" style="color:var(--green)"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg></div>
+        <div class="gd-ico" style="color:var(--text)"><svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2l1.5 5.7L17.5 9l-5.5 1.3L10.5 16 9 10.3 3.5 9 9 7.7Z"/><path d="M18 12.5l.8 2.6 2.7.7-2.7.7-.8 2.6-.8-2.6L14.5 16l2.7-.7Z"/></svg></div>
         <div class="gd-ctitle">Generado Totalmente por IA</div>
         <div class="gd-desc">Construye un plan de comidas completo desde cero, explorando recetas y alimentos adaptados a sus necesidades nutricionales.</div>
         <button class="gd-btn" style="background:#0f4c4c" onclick="genDietaDesde('ia')">Generar Ahora</button>
       </div>
       <div class="gd-card">
-        <div class="gd-ico" style="color:#b45309"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2Z"/><path d="M9 11l2 2 4-4"/></svg></div>
+        <div class="gd-ico" style="color:#a8895b"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H18a1 1 0 0 1 1 1v13.5"/><path d="M5 4.5v13A1.5 1.5 0 0 0 6.5 19H19"/><path d="M5 17.5A1.5 1.5 0 0 1 6.5 16H19"/><path d="M8.5 7.5h7M8.5 10.5h4.5"/></svg><span class="gd-badge"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span></div>
         <div class="gd-ctitle">Prioridad de Biblioteca</div>
         <div class="gd-desc">Usa los alimentos guardados y el historial como base. La IA rellenará los huecos para cumplir los objetivos.</div>
-        <div class="gd-bullet"><span></span>Prioriza tus alimentos guardados</div>
+        <div class="gd-bullet"><span></span>Prioriza los Alimentos Guardados y Favoritos.</div>
         <button class="gd-btn" style="background:#b9603a" onclick="genDietaDesde('biblioteca')">Continuar con Biblioteca</button>
       </div>
     </div>
@@ -16852,6 +17045,453 @@ function genDietaDesde(fuente){
   if(typeof IA!=='undefined') IA.fuenteDieta = fuente;
   const m=document.getElementById('modal-gen-dieta'); if(m) m.style.display='none';
   if(typeof iaGenerarDieta==='function') iaGenerarDieta();
+}
+
+// ── Modal: Configurar Split Semanal (Image 3) ──
+// Reusa splitBorrador + numerarSplit + tipoBase + guardarSplit (persistencia real).
+function abrirConfigSplitModal(){
+  const c = currentClient; if(!c || !c._training) return;
+  const original = (c._training.split && c._training.split.length) ? c._training.split.slice() : ['OFF','OFF','OFF','OFF','OFF','OFF','OFF'];
+  splitBorrador = numerarSplit(original);
+  splitDiaNuevo = null;
+  let modal=document.getElementById('modal-config-split');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-config-split'; modal.className='modal-overlay'; document.body.appendChild(modal); }
+  modal.style.display='flex';
+  modal.onclick=(e)=>{ if(e.target===modal) cspCerrar(); };
+  renderConfigSplitModal();
+}
+function cspCerrar(){ const m=document.getElementById('modal-config-split'); if(m) m.style.display='none'; splitBorrador=null; splitDiaNuevo=null; }
+function cspSetLen(n){
+  if(!splitBorrador) return;
+  n=Math.max(1,Math.min(14,n));
+  if(n>splitBorrador.length){ while(splitBorrador.length<n) splitBorrador.push('OFF'); }
+  else splitBorrador=splitBorrador.slice(0,n);
+  splitBorrador=numerarSplit(splitBorrador);
+  renderConfigSplitModal();
+}
+function cspSetDia(i, valor){
+  if(!splitBorrador) return;
+  if(valor==='__nueva__'){
+    const v=(prompt('Nombre de la sesión nueva (ej. UPPER, FULL BODY)…')||'').trim().toUpperCase();
+    if(v) splitBorrador[i]=tipoBase(v);
+  } else {
+    splitBorrador[i]=(valor==='OFF')?'OFF':tipoBase(valor);
+  }
+  splitBorrador=numerarSplit(splitBorrador);
+  renderConfigSplitModal();
+}
+async function cspGuardar(){
+  await guardarSplit();
+  const m=document.getElementById('modal-config-split'); if(m) m.style.display='none';
+}
+function renderConfigSplitModal(){
+  const modal=document.getElementById('modal-config-split'); if(!modal||!splitBorrador) return;
+  const DOW=['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'];
+  const SUG=['PUSH','PULL','LEG','TORSO','BRAZO','CADENA POSTERIOR','GLÚTEO'];
+  const existentes=[...new Set(splitBorrador.map(s=>s==='OFF'?null:tipoBase(s)).filter(Boolean))];
+  const tipos=[...new Set(SUG.concat(existentes))];
+  const lens=[7,10,12,14];
+  const lenPills=lens.map(n=>`<button class="csp-len${splitBorrador.length===n?' on':''}" onclick="cspSetLen(${n})"><b>${n}</b><span>Días</span></button>`).join('')
+    +`<button class="csp-len add" onclick="cspSetLen(${splitBorrador.length+1})" title="Añadir un día">+</button>`;
+  const cap=t=>t.charAt(0)+t.slice(1).toLowerCase();
+  const filas=splitBorrador.map((s,i)=>{
+    const off=!s||s==='OFF';
+    const base=off?'OFF':tipoBase(s);
+    const dow=splitBorrador.length===7?DOW[i]:('D'+(i+1));
+    const opts=`<option value="OFF"${off?' selected':''}>Descanso</option>`
+      +tipos.map(t=>`<option value="${escHtml(t)}"${(!off&&base===t)?' selected':''}>${escHtml(cap(t))}</option>`).join('')
+      +`<option value="__nueva__">➕ Nueva sesión…</option>`;
+    const icon=off
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4ZM6 1v3M10 1v3M14 1v3"/></svg>'
+      : '<svg width="15" height="15" viewBox="0 0 24 24" fill="var(--text3)"><circle cx="9" cy="6" r="1.5"/><circle cx="15" cy="6" r="1.5"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/><circle cx="9" cy="18" r="1.5"/><circle cx="15" cy="18" r="1.5"/></svg>';
+    return `<div class="csp-row${off?' off':''}">
+      <div class="csp-badge">${dow}</div>
+      <select class="csp-sel" onchange="cspSetDia(${i}, this.value)">${opts}</select>
+      <div style="flex-shrink:0;display:flex;align-items:center">${icon}</div>
+    </div>`;
+  }).join('');
+  modal.innerHTML=`<div class="modal-box csp-box">
+    <div class="csp-head"><div class="csp-ttl">Configurar Split Semanal</div><button class="csp-x" onclick="cspCerrar()">✕</button></div>
+    <div class="csp-body">
+      <div class="csp-lens">${lenPills}</div>
+      <div class="csp-seclbl">Planificación diaria</div>
+      ${filas}
+    </div>
+    <div class="csp-foot">
+      <button class="csp-cancel" onclick="cspCerrar()">Cancelar</button>
+      <button class="csp-save" onclick="cspGuardar()">Guardar Cambios <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></button>
+    </div>
+  </div>`;
+}
+
+// ── Modal: Añadir Ejercicio (Image 4) ──
+let _aex = { sel:null, tab:'lib', cat:'todos', q:'', series:3, repsMin:8, repsMax:12, rest:90, rpe:8 };
+function abrirAddExerciseModal(){
+  const c=currentClient; if(!c||!c._training) return;
+  _aex = { sel:null, tab:'lib', cat:'todos', q:'', series:3, repsMin:8, repsMax:12, rest:90, rpe:8 };
+  let modal=document.getElementById('modal-add-ex');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-add-ex'; modal.className='modal-overlay'; document.body.appendChild(modal); }
+  modal.style.display='flex';
+  modal.onclick=(e)=>{ if(e.target===modal) aexClose(); };
+  renderAddExerciseModal();
+}
+function aexClose(){ const m=document.getElementById('modal-add-ex'); if(m) m.style.display='none'; }
+function aexTab(t){ _aex.tab=t; renderAddExerciseModal(); }
+function aexCat(cat){ _aex.cat=cat; renderAddExerciseModal(); }
+function aexSearch(v){ _aex.q=v; renderAddExerciseModal(); const i=document.getElementById('aex-search'); if(i){ i.focus(); i.setSelectionRange(i.value.length,i.value.length); } }
+function aexSelect(id){
+  const ej=EXERCISE_LIBRARY.find(e=>e.id===id); if(!ej) return;
+  _aex.sel=id;
+  if(ej.default_sets!=null) _aex.series=ej.default_sets;
+  if(ej.default_rest_sec!=null) _aex.rest=ej.default_rest_sec;
+  const m=(ej.default_reps||'').toString().match(/(\d+)\D+(\d+)/);
+  if(m){ _aex.repsMin=+m[1]; _aex.repsMax=+m[2]; }
+  renderAddExerciseModal();
+}
+function aexSeries(d){ _aex.series=Math.max(1,Math.min(20,_aex.series+d)); renderAddExerciseModal(); }
+function aexRest(n){ _aex.rest=n; renderAddExerciseModal(); }
+function aexRpe(v){ _aex.rpe=v; }
+function aexReps(){
+  const mn=document.getElementById('aex-rmin'), mx=document.getElementById('aex-rmax'); if(!mn||!mx) return;
+  let a=+mn.value, b=+mx.value;
+  if(a>b){ if(document.activeElement===mn){ b=a; mx.value=b; } else { a=b; mn.value=a; } }
+  _aex.repsMin=a; _aex.repsMax=b;
+  const lbl=document.getElementById('aex-reps-lbl'); if(lbl) lbl.textContent=a+' - '+b;
+  const fill=document.getElementById('aex-fill'); if(fill){ fill.style.left=((a-1)/29*100)+'%'; fill.style.right=(100-((b-1)/29*100))+'%'; }
+}
+async function aexConfirm(){
+  const c=currentClient; if(!c||!c._training||!coachData||!_aex.sel) return;
+  const ej=EXERCISE_LIBRARY.find(e=>e.id===_aex.sel); if(!ej) return;
+  const sessionType=tipoSesionActual(c);
+  if(!sessionType){ showToast('Selecciona primero una sesión en el split.'); return; }
+  const porSesion={}; (c._training.exercises||[]).forEach(e=>{const t=normalizarTipoSesion(e.session_type||'OTROS');(porSesion[t]=porSesion[t]||[]).push(e);});
+  const ordenMax=(porSesion[sessionType]||[]).reduce((m,e)=>Math.max(m,e.exercise_order||0),0);
+  const reps=_aex.repsMin===_aex.repsMax?String(_aex.repsMin):(_aex.repsMin+'-'+_aex.repsMax);
+  const fila={ client_id:c.id, coach_id:coachData.id, exercise_id:_aex.sel, session_type:sessionType,
+    exercise_order:ordenMax+1, sets:_aex.series, reps:reps, rest_sec:_aex.rest, approx:null, is_active:true };
+  const { data, error } = await sb.from('client_plans').insert(fila).select().single();
+  if(error||!data){ console.error('aexConfirm error:',error); alert('No se pudo añadir el ejercicio. Inténtalo de nuevo.'); return; }
+  c._training.exercises.push({ id:data.id, session_type:sessionType, exercise_order:fila.exercise_order,
+    sets:fila.sets, reps:fila.reps, rest_sec:fila.rest_sec, approx:null,
+    name:ej.name||'Ejercicio', muscle_group:ej.muscle_group||null, video_url:ej.video_url||null });
+  aexClose(); renderClientPanel(); showToast('Ejercicio añadido a '+sessionType+'.');
+}
+function renderAddExerciseModal(){
+  const modal=document.getElementById('modal-add-ex'); if(!modal) return;
+  const ej=_aex.sel?EXERCISE_LIBRARY.find(e=>e.id===_aex.sel):null;
+  // ── categorías dinámicas ──
+  const grupos=[...new Set(EXERCISE_LIBRARY.map(e=>(e.muscle_group||'').trim()).filter(Boolean))];
+  const cats=['todos'].concat(grupos.slice(0,7));
+  const chips=cats.map(cat=>`<button class="aex-chip${_aex.cat===cat?' on':''}" onclick="aexCat('${escHtml(cat)}')">${cat==='todos'?'Todos':escHtml(cat)}</button>`).join('');
+  // ── lista filtrada ──
+  const q=(_aex.q||'').trim().toLowerCase();
+  const lista=EXERCISE_LIBRARY.filter(e=>{
+    const okCat=_aex.cat==='todos'||((e.muscle_group||'').trim().toLowerCase()===_aex.cat.toLowerCase());
+    const okQ=!q||(e.name||'').toLowerCase().includes(q);
+    return okCat&&okQ;
+  });
+  const listHtml=lista.length?lista.map(e=>`
+    <div class="aex-li${_aex.sel===e.id?' sel':''}" onclick="aexSelect('${escHtml(e.id)}')">
+      <div class="aex-li-th"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></svg></div>
+      <div style="flex:1;min-width:0"><div class="aex-li-name">${escHtml(e.name||'Ejercicio')}</div><div class="aex-li-mg">${escHtml(e.muscle_group||'—')}</div></div>
+      <button class="aex-li-plus" onclick="event.stopPropagation();aexSelect('${escHtml(e.id)}')">+</button>
+    </div>`).join(''):`<div style="text-align:center;color:var(--text3);font-size:13px;padding:40px 0">${EXERCISE_LIBRARY.length?'Sin ejercicios que coincidan.':'La biblioteca de ejercicios aún no tiene elementos.'}</div>`;
+  // ── contenido por pestaña ──
+  let contenido;
+  if(_aex.tab==='import'){
+    contenido=`<div class="aex-chips" style="padding-top:18px"></div><div style="padding:4px 24px 24px">
+      <div class="aex-seclbl">Importar ejercicios</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.5;margin:0 0 14px">Sube tu base de datos de ejercicios en CSV o Excel para ampliar la biblioteca.</p>
+      <button onclick="descargarPlantillaEjercicios()" style="display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;color:var(--green);font-size:13.5px;font-weight:700;font-family:'DM Sans',sans-serif;margin-bottom:14px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Descargar plantilla de ejemplo</button>
+      <input type="file" id="aex-import-input" accept=".xlsx,.xls,.csv" style="display:none" onchange="importarEjerciciosExcel(this)">
+      <div onclick="document.getElementById('aex-import-input').click()" style="border:2px dashed var(--border2);border-radius:14px;padding:34px 18px;text-align:center;cursor:pointer;background:var(--bg)">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8ZM14 2v6h6M12 18v-6M9 15l3-3 3 3"/></svg>
+        <div style="font-size:15px;font-weight:700;color:var(--text)">Arrastra tu archivo aquí</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:4px">Admite .csv, .xlsx (máx. 10MB)</div>
+      </div></div>`;
+  } else if(_aex.tab==='saved'){
+    contenido=`<div style="padding:50px 24px;text-align:center;color:var(--text3);font-size:13.5px;line-height:1.6">Tus <strong style="color:var(--text2)">ejercicios guardados</strong> aparecerán aquí.<br>De momento añade desde la Biblioteca.</div>`;
+  } else if(_aex.tab==='ai'){
+    contenido=`<div style="padding:8px 24px 24px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg><span style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--text)">Generador de Rutina IA</span></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.5;margin:0 0 16px">Indica cuántos ejercicios por grupo y la IA construirá la sesión.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+        ${['Pecho','Espalda','Piernas','Hombros'].map(g=>`<div style="display:flex;align-items:center;justify-content:space-between;border:1.5px solid var(--border);border-radius:11px;padding:10px 14px"><span style="font-size:13.5px;color:var(--text)">${g}</span><span style="font-family:'Geist Mono',monospace;font-size:14px;color:var(--text3);background:var(--bg3);border-radius:7px;padding:3px 10px">2</span></div>`).join('')}
+      </div>
+      <button onclick="showToast('El generador de rutina con IA todavía no está disponible.')" style="width:100%;height:48px;border:none;border-radius:12px;background:var(--green);color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:6px"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> Generar Rutina</button>
+    </div>`;
+  } else {
+    contenido=`<div class="aex-chips">${chips}</div><div class="aex-list">${listHtml}</div>`;
+  }
+  // ── panel derecho ──
+  const rpeOpts=[6,7,8,9,10].map(v=>`<option value="${v}"${_aex.rpe===v?' selected':''}>RPE ${v}${v===8?' – Exigente, 2 reps en reserva':(v===10?' – Máximo esfuerzo':'')}</option>`).join('');
+  const right=ej?`
+    <div class="aex-rbody">
+      <div class="aex-seclbl">Detalles del ejercicio</div>
+      <div class="aex-detail"><b>${escHtml(ej.name||'Ejercicio')}</b><p>${escHtml(ej.description||(ej.muscle_group?(ej.muscle_group+' · movimiento'):'Ejercicio de la biblioteca.'))}</p></div>
+      <div class="aex-seclbl">Programación</div>
+      <div class="aex-prow"><div class="aex-prow-top"><span class="aex-plabel">Series</span><div class="aex-step"><button onclick="aexSeries(-1)">−</button><b>${_aex.series}</b><button onclick="aexSeries(1)">+</button></div></div></div>
+      <div class="aex-prow"><div class="aex-prow-top"><span class="aex-plabel">Rango de Reps</span><span class="aex-pval" id="aex-reps-lbl">${_aex.repsMin} - ${_aex.repsMax}</span></div>
+        <div class="aex-rng"><div class="aex-rng-track"></div><div class="aex-rng-fill" id="aex-fill" style="left:${(_aex.repsMin-1)/29*100}%;right:${100-((_aex.repsMax-1)/29*100)}%"></div>
+          <input type="range" id="aex-rmin" min="1" max="30" value="${_aex.repsMin}" oninput="aexReps()">
+          <input type="range" id="aex-rmax" min="1" max="30" value="${_aex.repsMax}" oninput="aexReps()"></div></div>
+      <div class="aex-prow"><div class="aex-prow-top"><span class="aex-plabel">Descanso (segundos)</span></div>
+        <div class="aex-rest">${[45,60,90,120].map(n=>`<button class="${_aex.rest===n?'on':''}" onclick="aexRest(${n})">${n}s</button>`).join('')}</div></div>
+      <div class="aex-prow"><div class="aex-prow-top"><span class="aex-plabel">Intensidad (RPE)</span></div>
+        <select class="aex-rpe" onchange="aexRpe(+this.value)">${rpeOpts}</select>
+        <div style="font-size:11px;color:var(--text3);margin-top:7px">El RPE es orientativo: el plan guarda series, reps y descanso.</div></div>
+    </div>`:`<div class="aex-rbody"><div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;color:var(--text3);padding:30px"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:12px"><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></svg><div style="font-size:14px;font-weight:600;color:var(--text2)">Selecciona un ejercicio</div><div style="font-size:12.5px;margin-top:5px;line-height:1.5">Elige uno de la lista para configurar sus series, reps y descanso.</div></div></div>`;
+  modal.innerHTML=`<div class="modal-box aex-box">
+    <button class="aex-x" onclick="aexClose()">✕</button>
+    <div class="aex-left">
+      <div class="aex-lhead">
+        <div class="aex-ttl">Añadir Ejercicio</div>
+        <div class="aex-srch"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="aex-search" class="aex-search" value="${escHtml(_aex.q)}" placeholder="Buscar en la biblioteca..." oninput="aexSearch(this.value)"></div>
+        <div class="aex-tabs">
+          <button class="aex-tab${_aex.tab==='lib'?' on':''}" onclick="aexTab('lib')">Biblioteca</button>
+          <button class="aex-tab${_aex.tab==='saved'?' on':''}" onclick="aexTab('saved')">Mis Guardados</button>
+          <button class="aex-tab${_aex.tab==='import'?' on':''}" onclick="aexTab('import')">Importar</button>
+          <button class="aex-tab${_aex.tab==='ai'?' on':''}" onclick="aexTab('ai')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> Generar IA</button>
+        </div>
+      </div>
+      ${contenido}
+    </div>
+    <div class="aex-right">
+      ${right}
+      <div class="aex-foot"><button class="aex-cancel" onclick="aexClose()">Cancelar</button><button class="aex-add" ${ej?'':'disabled'} onclick="aexConfirm()">Añadir al Plan</button></div>
+    </div>
+  </div>`;
+}
+
+// ── Drawer: Editar Ejercicio (Image 5) ──
+let _eex = { id:null, q:'' };
+function abrirEditExerciseDrawer(id){
+  const c=currentClient; if(!c||!c._training) return;
+  const ej=(c._training.exercises||[]).find(e=>e.id===id); if(!ej) return;
+  _eex={ id, q:'' };
+  let modal=document.getElementById('drawer-edit-ex');
+  if(!modal){ modal=document.createElement('div'); modal.id='drawer-edit-ex'; modal.className='modal-overlay'; document.body.appendChild(modal); }
+  modal.style.display='flex'; modal.style.justifyContent='flex-end'; modal.style.alignItems='stretch';
+  modal.onclick=(e)=>{ if(e.target===modal) eexClose(); };
+  renderEditExerciseDrawer();
+}
+function eexClose(){ const m=document.getElementById('drawer-edit-ex'); if(m){ m.style.display='none'; m.style.justifyContent=''; m.style.alignItems=''; } }
+function eexSearch(v){ _eex.q=v; renderEditExerciseDrawer(); const i=document.getElementById('eex-search'); if(i){ i.focus(); i.setSelectionRange(i.value.length,i.value.length); } }
+async function eexApply(){
+  const c=currentClient; if(!c||!c._training||!_eex.id) return;
+  const ej=(c._training.exercises||[]).find(e=>e.id===_eex.id); if(!ej) return;
+  const numEl=id=>{ const el=document.getElementById(id); if(!el) return null; const v=el.value.trim(); if(v==='') return null; const n=Number(v); return (isNaN(n)||n<0)?NaN:Math.round(n); };
+  const sets=numEl('eex-sets'); const rest=numEl('eex-rest');
+  const repsEl=document.getElementById('eex-reps'); const reps=repsEl?repsEl.value.trim():'';
+  if([sets,rest].some(v=>Number.isNaN(v))){ alert('Series y descanso deben ser números positivos.'); return; }
+  const notesEl=document.getElementById('eex-notes'); const notes=notesEl?notesEl.value:'';
+  const { error } = await sb.from('client_plans').update({ sets, rest_sec:rest, reps:reps||null }).eq('id',_eex.id);
+  if(error){ console.error('eexApply error:',error); alert('No se pudieron guardar los cambios.'); return; }
+  ej.sets=sets; ej.rest_sec=rest; ej.reps=reps||null; ej._coachNotes=notes;
+  eexClose(); renderClientPanel(); showToast('Cambios aplicados.');
+}
+async function eexReplace(newId){
+  const c=currentClient; if(!c||!_eex.id) return;
+  const nuevo=EXERCISE_LIBRARY.find(e=>e.id===newId); if(!nuevo) return;
+  const ej=(c._training.exercises||[]).find(e=>e.id===_eex.id); if(!ej) return;
+  const ok=await confirmDestructive({ title:'Cambiar ejercicio',
+    message:'¿Sustituir <strong style="color:#111">'+escHtml(ej.name||'')+'</strong> por <strong style="color:#111">'+escHtml(nuevo.name||'')+'</strong>? Se mantienen series, reps y descanso.',
+    confirmText:'Cambiar', icon:'archive', danger:false });
+  if(!ok) return;
+  const { error } = await sb.from('client_plans').update({ exercise_id:newId }).eq('id',_eex.id);
+  if(error){ console.error('eexReplace error:',error); alert('No se pudo cambiar el ejercicio.'); return; }
+  ej.name=nuevo.name||ej.name; ej.muscle_group=nuevo.muscle_group||ej.muscle_group; ej.video_url=nuevo.video_url||null;
+  eexClose(); renderClientPanel(); showToast('Ejercicio cambiado.');
+}
+function renderEditExerciseDrawer(){
+  const modal=document.getElementById('drawer-edit-ex'); if(!modal) return;
+  const c=currentClient; const ej=(c&&c._training)?(c._training.exercises||[]).find(e=>e.id===_eex.id):null;
+  if(!ej){ eexClose(); return; }
+  const mg=(ej.muscle_group||'').trim();
+  const q=(_eex.q||'').trim().toLowerCase();
+  let alts;
+  if(q){ alts=EXERCISE_LIBRARY.filter(e=>(e.name||'').toLowerCase().includes(q) && (e.name||'')!==ej.name); }
+  else { alts=EXERCISE_LIBRARY.filter(e=>(e.name||'')!==ej.name && (!mg || (e.muscle_group||'').trim().toLowerCase()===mg.toLowerCase())); }
+  alts=alts.slice(0,8);
+  const altHtml=alts.length?alts.map(e=>`
+    <div class="eex-alt" onclick="eexReplace('${escHtml(e.id)}')">
+      <div class="eex-alt-th"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></svg></div>
+      <div style="flex:1;min-width:0"><div class="eex-alt-name">${escHtml(e.name||'Ejercicio')}</div><div class="eex-alt-mg">${escHtml(e.muscle_group||'—')}</div></div>
+    </div>`).join(''):`<div style="font-size:13px;color:var(--text3);padding:18px 4px;text-align:center">${EXERCISE_LIBRARY.length?'Sin alternativas que coincidan.':'La biblioteca aún no tiene ejercicios.'}</div>`;
+  modal.innerHTML=`<div class="modal-box eex-box">
+    <div class="eex-head">
+      <div style="min-width:0"><div class="eex-ttl">Editar Ejercicio</div><div class="eex-sub">${escHtml(ej.name||'Ejercicio')}</div></div>
+      <button class="eex-x" onclick="eexClose()">✕</button>
+    </div>
+    <div class="eex-body">
+      <div class="eex-seclbl">Parámetros</div>
+      <div class="eex-params">
+        <div class="eex-field"><label>Series</label><input id="eex-sets" class="eex-input" type="number" min="0" value="${ej.sets==null?'':escHtml(String(ej.sets))}"></div>
+        <div class="eex-field"><label>Reps</label><input id="eex-reps" class="eex-input" value="${escHtml(ej.reps||'')}"></div>
+        <div class="eex-field"><label>Descanso (s)</label><input id="eex-rest" class="eex-input" type="number" min="0" value="${ej.rest_sec==null?'':escHtml(String(ej.rest_sec))}"></div>
+      </div>
+      <div class="eex-seclbl">Notas del entrenador</div>
+      <textarea id="eex-notes" class="eex-notes" placeholder="Indicaciones técnicas, tempo, foco muscular…">${escHtml(ej._coachNotes||'')}</textarea>
+      <div style="font-size:11px;color:var(--text3);margin-top:6px">Las notas se mantienen en esta sesión; aún no hay columna para guardarlas en base de datos.</div>
+      <div class="eex-change-head"><span class="eex-seclbl" style="margin:0">Cambiar ejercicio</span><span class="eex-tag">Biblioteca</span></div>
+      <div class="eex-srch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="eex-search" class="eex-search" value="${escHtml(_eex.q)}" placeholder="Buscar un ejercicio alternativo…" oninput="eexSearch(this.value)"></div>
+      ${altHtml}
+    </div>
+    <div class="eex-foot"><button class="eex-discard" onclick="eexClose()">Descartar</button><button class="eex-apply" onclick="eexApply()">Aplicar Cambios</button></div>
+  </div>`;
+}
+
+// ── Modal: Biblioteca de Ejercicios (Image 2) ──
+let _bex = { q:'', cat:'todos', view:'grid', sel:[] };
+function abrirBibliotecaEjerciciosModal(){
+  _bex = { q:'', cat:'todos', view:'grid', sel:[] };
+  let modal=document.getElementById('modal-bib-ejercicios');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-bib-ejercicios'; modal.className='modal-overlay'; document.body.appendChild(modal); }
+  modal.style.display='flex';
+  modal.onclick=(e)=>{ if(e.target===modal) bexClose(); };
+  renderBibEjercicios();
+}
+function bexClose(){ const m=document.getElementById('modal-bib-ejercicios'); if(m) m.style.display='none'; }
+function bexCat(cat){ _bex.cat=cat; renderBibEjercicios(); }
+function bexView(v){ _bex.view=v; renderBibEjercicios(); }
+function bexSearch(v){ _bex.q=v; renderBibEjercicios(); const i=document.getElementById('bex-search'); if(i){ i.focus(); i.setSelectionRange(i.value.length,i.value.length); } }
+function bexToggle(id){ const i=_bex.sel.indexOf(id); if(i>=0) _bex.sel.splice(i,1); else _bex.sel.push(id); renderBibEjercicios(); }
+async function bexFinalizar(){
+  const ids=_bex.sel.slice();
+  if(!ids.length){ bexClose(); return; }
+  const c=currentClient;
+  if(!tipoSesionActual(c)){ showToast('Selecciona primero una sesión en el split.'); return; }
+  for(const id of ids){ if(typeof anadirEjercicio==='function') await anadirEjercicio(id); }
+  bexClose();
+  showToast(ids.length+(ids.length>1?' ejercicios añadidos.':' ejercicio añadido.'));
+}
+function renderBibEjercicios(){
+  const modal=document.getElementById('modal-bib-ejercicios'); if(!modal) return;
+  const cap=t=>t?(t.charAt(0).toUpperCase()+t.slice(1)):t;
+  const grupos=[...new Set(EXERCISE_LIBRARY.map(e=>(e.muscle_group||'').trim()).filter(Boolean))];
+  const cats=['todos'].concat(grupos);
+  const chips=cats.map(cat=>`<button class="bex-chip${_bex.cat===cat?' on':''}" onclick="bexCat('${escHtml(cat)}')">${cat==='todos'?'Todo':escHtml(cap(cat))}</button>`).join('');
+  const q=(_bex.q||'').trim().toLowerCase();
+  const lista=EXERCISE_LIBRARY.filter(e=>{
+    const okCat=_bex.cat==='todos'||((e.muscle_group||'').trim().toLowerCase()===_bex.cat.toLowerCase());
+    const okQ=!q||(e.name||'').toLowerCase().includes(q);
+    return okCat&&okQ;
+  });
+  const dumb='<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></svg>';
+  let cuerpo;
+  if(!lista.length){
+    cuerpo=`<div style="text-align:center;color:var(--text3);font-size:14px;padding:60px 0">${EXERCISE_LIBRARY.length?'Sin ejercicios que coincidan con el filtro.':'La biblioteca de ejercicios aún no tiene elementos.'}</div>`;
+  } else if(_bex.view==='list'){
+    cuerpo=`<div>${lista.map(e=>{ const on=_bex.sel.includes(e.id); return `
+      <div class="bex-li2">
+        <div class="bex-li2-th">${dumb}</div>
+        <div style="flex:1;min-width:0"><div class="bex-cname" style="font-size:14.5px">${escHtml(e.name||'Ejercicio')}</div><div class="bex-csub">${escHtml(e.muscle_group||'—')}</div></div>
+        <button class="bex-add${on?' on':''}" onclick="bexToggle('${escHtml(e.id)}')">${on?'✓':'+'}</button>
+      </div>`; }).join('')}</div>`;
+  } else {
+    cuerpo=`<div class="bex-grid">${lista.map(e=>{ const on=_bex.sel.includes(e.id); return `
+      <div class="bex-card">
+        <div class="bex-img">${e.muscle_group?`<span class="bex-tag">${escHtml(e.muscle_group)}</span>`:''}${dumb}</div>
+        <div class="bex-cbody"><div style="min-width:0"><div class="bex-cname">${escHtml(e.name||'Ejercicio')}</div><div class="bex-csub">${escHtml(e.muscle_group||'—')}</div></div>
+          <button class="bex-add${on?' on':''}" onclick="bexToggle('${escHtml(e.id)}')">${on?'✓':'+'}</button></div>
+      </div>`; }).join('')}</div>`;
+  }
+  const n=_bex.sel.length;
+  modal.innerHTML=`<div class="modal-box bex-box">
+    <div class="bex-head">
+      <div><div class="bex-ttl">Biblioteca de Ejercicios</div><div class="bex-sub">Explora la selección de movimientos técnicos.</div></div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <input type="file" id="bex-import-input" accept=".xlsx,.xls,.csv" style="display:none" onchange="importarEjerciciosExcel(this)">
+        <button class="bex-imp" onclick="document.getElementById('bex-import-input').click()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Importar ejercicios</button>
+        <button class="bex-x" onclick="bexClose()">✕</button>
+      </div>
+    </div>
+    <div class="bex-toolbar">
+      <div class="bex-srch"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="bex-search" class="bex-search" value="${escHtml(_bex.q)}" placeholder="Buscar ejercicio (ej: Press de Banca)…" oninput="bexSearch(this.value)"></div>
+      <div class="bex-view"><span class="bex-view-lbl">Vista:</span><div class="bex-seg"><button class="${_bex.view==='grid'?'on':''}" onclick="bexView('grid')">Grid</button><button class="${_bex.view==='list'?'on':''}" onclick="bexView('list')">Lista</button></div></div>
+    </div>
+    <div class="bex-filters"><div class="bex-frow"><span class="bex-flbl">Músculo:</span>${chips}</div></div>
+    <div class="bex-body">${cuerpo}</div>
+    <div class="bex-foot">
+      <div class="bex-foot-info"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg> Pulsa "+" para seleccionar y añade todo con Finalizar.</div>
+      <button class="bex-close" onclick="bexClose()">Cerrar Biblioteca</button>
+      <button class="bex-fin" onclick="bexFinalizar()">Finalizar Selección (${n})</button>
+    </div>
+  </div>`;
+}
+
+// ── Modal: Generar Rutina con IA (Image 6) ──
+// Config en memoria (_gri). El generador real de rutina con IA aún no existe → Confirmar avisa.
+let _gri = null;
+function abrirGenerarRutinaIAModal(){
+  const c=currentClient; if(!c||!c._training) return;
+  const split=numerarSplit(c._training.split||[]);
+  const sesiones=[...new Set(split.filter(s=>s&&s!=='OFF'))];
+  const sel={}; sesiones.forEach((s,i)=>{ sel[s]= i<3; });
+  const grupos={}; sesiones.forEach(s=>{ grupos[s]=[]; });
+  _gri={ fuente:'ia', sesiones:sel, grupos, lista:sesiones };
+  let modal=document.getElementById('modal-gen-rutina');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-gen-rutina'; modal.className='modal-overlay'; document.body.appendChild(modal); }
+  modal.style.display='flex';
+  modal.onclick=(e)=>{ if(e.target===modal) griClose(); };
+  renderGenRutinaModal();
+}
+function griClose(){ const m=document.getElementById('modal-gen-rutina'); if(m) m.style.display='none'; }
+function griFuente(f){ if(_gri){ _gri.fuente=f; renderGenRutinaModal(); } }
+function griToggleSesion(s){ if(_gri){ _gri.sesiones[s]=!_gri.sesiones[s]; renderGenRutinaModal(); } }
+function griGrupoStep(s,idx,d){ if(!_gri) return; const g=_gri.grupos[s] && _gri.grupos[s][idx]; if(!g) return; g.n=Math.max(1,Math.min(9,g.n+d)); renderGenRutinaModal(); }
+function griDelGrupo(s,idx){ if(!_gri||!_gri.grupos[s]) return; _gri.grupos[s].splice(idx,1); renderGenRutinaModal(); }
+function griAddGrupo(s){ if(!_gri) return; const v=(prompt('Grupo muscular (ej. Pecho, Hombro Lateral)…')||'').trim(); if(v){ (_gri.grupos[s]=_gri.grupos[s]||[]).push({ name:v.charAt(0).toUpperCase()+v.slice(1), n:2 }); renderGenRutinaModal(); } }
+function griConfirmar(){ showToast('El generador de rutina con IA todavía no está disponible.'); }
+function renderGenRutinaModal(){
+  const modal=document.getElementById('modal-gen-rutina'); if(!modal||!_gri) return;
+  const cap=t=>t?t.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' '):t;
+  const optIA=`<div class="gri-opt${_gri.fuente==='ia'?' on':''}" onclick="griFuente('ia')">
+    ${_gri.fuente==='ia'?'<span class="gri-opt-badge">Seleccionado</span>':''}
+    <div class="gri-opt-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg></div>
+    <div class="gri-opt-ttl">Generado Totalmente por IA</div>
+    <div class="gri-opt-desc">Crea un entrenamiento desde cero analizando el historial y objetivos.</div></div>`;
+  const optBib=`<div class="gri-opt${_gri.fuente==='biblioteca'?' on':''}" onclick="griFuente('biblioteca')">
+    ${_gri.fuente==='biblioteca'?'<span class="gri-opt-badge">Seleccionado</span>':''}
+    <div class="gri-opt-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h7v15H6a2 2 0 0 0-2 2ZM13 4h5a2 2 0 0 1 2 2v13"/></svg></div>
+    <div class="gri-opt-ttl">Prioridad de Biblioteca</div>
+    <div class="gri-opt-desc">Utiliza tus ejercicios guardados preferidos antes de sugerir nuevos.</div></div>`;
+  const checks=_gri.lista.length?_gri.lista.map(s=>{
+    const on=!!_gri.sesiones[s];
+    return `<div class="gri-sescheck${on?' on':''}" onclick="griToggleSesion('${escHtml(s)}')"><span class="gri-cbox">${on?'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>':''}</span>${escHtml(cap(s))}</div>`;
+  }).join(''):'<div style="font-size:13px;color:var(--text3)">Este cliente no tiene sesiones en el split. Configúralo primero.</div>';
+  const cards=_gri.lista.filter(s=>_gri.sesiones[s]).map(s=>{
+    const grupos=_gri.grupos[s]||[];
+    const filas=grupos.map((g,idx)=>`<div class="gri-grp">
+      <span class="gri-grp-name">${escHtml(g.name)}</span>
+      <div class="gri-step"><button onclick="griGrupoStep('${escHtml(s)}',${idx},-1)">−</button><b>${g.n}</b><button onclick="griGrupoStep('${escHtml(s)}',${idx},1)">+</button></div>
+    </div>`).join('');
+    return `<div class="gri-sescard">
+      <div class="gri-sescard-head"><span class="gri-sescard-ttl">${escHtml(cap(s))}</span><span class="gri-sescard-n">${grupos.length} ${grupos.length===1?'grupo':'grupos'}</span></div>
+      ${filas||'<div style="font-size:12.5px;color:var(--text3);padding:4px 2px 10px">Sin grupos. Añade uno abajo.</div>'}
+      <button class="gri-addgrp" onclick="griAddGrupo('${escHtml(s)}')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg> Añadir Grupo a ${escHtml(cap(s))}</button>
+    </div>`;
+  }).join('');
+  modal.innerHTML=`<div class="modal-box gri-box">
+    <div class="gri-head">
+      <div class="gri-ttl">Generar Rutina con IA</div>
+      <div class="gri-sub">Elige cómo crear el entreno. La IA lo optimizará según el objetivo y las restricciones del cliente.</div>
+    </div>
+    <div class="gri-body">
+      <div class="gri-opts">${optIA}${optBib}</div>
+      <div class="gri-seclbl">Seleccionar Sesiones del Split</div>
+      <div class="gri-ses">${checks}</div>
+      ${cards?`<div class="gri-seclbl">Configuración por Sesión</div>${cards}`:''}
+    </div>
+    <div class="gri-foot">
+      <div class="gri-quote"><span class="gri-quote-av"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>"La IA optimizará el volumen según la RPE de la última sesión."</div>
+      <button class="gri-cancel" onclick="griClose()">Cancelar</button>
+      <button class="gri-confirm" onclick="griConfirmar()">Confirmar Selección</button>
+    </div>
+  </div>`;
 }
 
 // ── Modal: Biblioteca de Alimentos ──
