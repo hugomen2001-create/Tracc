@@ -262,6 +262,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM San
 .np-link-ghost{display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer}
 .np-link-green{display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:var(--green);font-size:13px;font-weight:700;cursor:pointer}
 .np-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.np-prog{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:13px;padding:14px 22px;font-size:14px;font-weight:600;color:var(--text2);cursor:pointer}
+.np-prog:hover{background:var(--bg3);color:var(--text)}
 .np-totals{display:flex;align-items:center;gap:26px;flex-wrap:wrap;font-size:14px;color:var(--text2)}
 .np-totals b{color:var(--text);font-weight:700}
 .np-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:1px}
@@ -16570,6 +16572,7 @@ function renderNutricionPlan(c){
   if(q.allergies && String(q.allergies).trim() && !/ningun|no |nada/i.test(q.allergies)) prefRows.push({txt:escHtml(q.allergies),badge:'SEVERA',cls:'sev',ico:'<path d="M4.9 4.9 19 19"/><circle cx="12" cy="12" r="9"/>'});
   if(q.diseases && String(q.diseases).trim() && !/ningun|no |nada|sano/i.test(q.diseases)) prefRows.push({txt:escHtml(q.diseases),badge:'PATOLOGÍA',cls:'act',ico:'<path d="M11 2h2v6h6v2h-6v6h-2v-6H5V8h6Z"/>'});
   if(q.disliked_foods && String(q.disliked_foods).trim() && !/ningun|no |nada/i.test(q.disliked_foods)) prefRows.push({txt:escHtml(q.disliked_foods),badge:'EVITAR',cls:'pref',ico:'<path d="M3 2v7a3 3 0 0 0 6 0V2M6 13v9M21 15V2a5 5 0 0 0-3 9v11"/>'});
+  if(plan && plan.preferences && String(plan.preferences).trim()) prefRows.push({txt:escHtml(plan.preferences),badge:'PREFERENCIA',cls:'act',ico:'<path d="M12 6c0-2 1-3 3-3M12 6c-3 0-6 2-6 6 0 5 3 9 6 9s6-4 6-9c0-4-3-6-6-6Z"/>'});
   const prefHtml = prefRows.length ? prefRows.map(r=>`
     <div class="np-pref-row">
       <span class="np-pref-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${r.ico}</svg></span>
@@ -16622,25 +16625,14 @@ function renderNutricionPlan(c){
       <div class="np-card">
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:6px">
           <div class="np-serif" style="font-size:24px">Cronograma de Comidas</div>
-          <div style="display:flex;gap:10px">
-            <button class="np-link-ghost" onclick="abrirBibliotecaAlimentosModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2Z"/></svg> Biblioteca</button>
-            <button class="np-link-green" onclick="abrirGeneradorDietaIA()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> Generar con IA</button>
-          </div>
         </div>
         <div style="font-size:11.5px;color:var(--text3);margin-bottom:14px">Opciones de dieta · pulsa el lápiz de cada comida para editarla</div>
         ${renderCronogramaComidas(c)}
       </div>
     </div>
-    <div class="np-footer">
-      <div class="np-totals">
-        <span><span class="np-dot" style="background:var(--green)"></span>Proteína Total: <b>${prot!=null?prot+'g':'—'}</b></span>
-        <span><span class="np-dot" style="background:var(--text3)"></span>Carbohidratos: <b>${carb!=null?carb+'g':'—'}</b></span>
-        <span><span class="np-dot" style="background:var(--text3)"></span>Grasas: <b>${fat!=null?fat+'g':'—'}</b></span>
-      </div>
-      <div style="display:flex;align-items:center;gap:18px">
-        <button class="np-close-view" onclick="editPlanVista('dashboard')">Cerrar Vista</button>
-        <button class="np-save-send" onclick="guardarPlanNutriEnviar()">Guardar Cambios &amp; Enviar</button>
-      </div>
+    <div class="np-footer" style="justify-content:flex-end">
+      <button class="np-prog" onclick="abrirModalProgramarCambio('diet')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Programar cambio</button>
+      <button class="np-save-send" onclick="guardarPlanNutriEnviar()">Guardar Cambios &amp; Enviar</button>
     </div>`;
 }
 
@@ -16690,6 +16682,7 @@ function editarPreferenciasNutri(){
       ${fld('pn-allergies','Alergias / Intolerancias', q.allergies, 'Ej: Intolerancia a la lactosa')}
       ${fld('pn-diseases','Patologías / Condiciones', q.diseases, 'Ej: Hipertensión')}
       ${fld('pn-disliked','Alimentos a evitar', q.disliked_foods, 'Ej: Mariscos, brócoli')}
+      ${fld('pn-prefs','Preferencias', (c._nutrition&&c._nutrition.plan&&c._nutrition.plan.preferences)||'', 'Ej: Gluten free, comidas sencillas')}
       <button id="pn-save" onclick="guardarPreferenciasNutri()" style="height:40px;border-radius:9px;background:var(--green);border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px">Guardar</button>
     </div>
   </div>`;
@@ -16699,11 +16692,14 @@ async function guardarPreferenciasNutri(){
   const c=currentClient; if(!c) return;
   const v=id=>(document.getElementById(id)?.value||'').trim()||null;
   const payload={ allergies:v('pn-allergies'), diseases:v('pn-diseases'), disliked_foods:v('pn-disliked') };
+  const prefs=v('pn-prefs');
   const btn=document.getElementById('pn-save'); if(btn){btn.disabled=true;btn.textContent='Guardando…';}
   try{
     const {error}=await sb.from('client_questionnaire').update(payload).eq('client_id',c.id);
     if(error){ console.error('guardarPreferenciasNutri:',error); showToast('✕ No se pudo guardar'); if(btn){btn.disabled=false;btn.textContent='Guardar';} return; }
     c._questionnaire=Object.assign({},c._questionnaire,payload);
+    const plan=c._nutrition&&c._nutrition.plan;
+    if(plan&&plan.id){ try{ await sb.from('nutrition_plans').update({preferences:prefs}).eq('id',plan.id); plan.preferences=prefs; }catch(e){ console.error('pref plan:',e); } }
     document.getElementById('modal-pref-nutri').style.display='none';
     renderClientPanel(); showToast('✓ Preferencias actualizadas');
   }catch(e){ console.error(e); showToast('✕ Error de conexión'); if(btn){btn.disabled=false;btn.textContent='Guardar';} }
@@ -16798,7 +16794,6 @@ function renderCronogramaComidas(c){
   return `
     <div class="cr-opts">${pills}${addPill}</div>
     <div class="cr-meals">${cards}</div>
-    <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:16px">${tiraBibliotecaAlimentos()}${panelBibliotecaHtml()}</div>
   `;
 }
 
