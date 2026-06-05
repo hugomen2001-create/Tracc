@@ -209,9 +209,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM San
 .ep-stat-val{font-family:'Geist Mono',monospace;font-size:24px;font-weight:600;color:var(--text)}
 .ep-edit{position:absolute;top:14px;right:16px;width:30px;height:30px;border-radius:9px;border:1px solid var(--border);background:#fff;color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer}
 .ep-edit:hover{background:var(--bg3);color:var(--text)}
-.ep-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.ep-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
 @media(max-width:980px){.ep-grid{grid-template-columns:1fr}}
-.ep-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:28px}
+.ep-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;flex-direction:column}
 .ep-day{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;background:#fff}
 .ep-day.on{background:#1c1b1b;border-color:#1c1b1b}
 .ep-dot{width:6px;height:6px;border-radius:50%;background:#fff}
@@ -229,6 +229,89 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM San
 .ep-discard{background:none;border:none;color:var(--text2);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer}
 .ep-save{background:#1c1b1b;color:#fff;border:none;border-radius:13px;padding:16px 28px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
 .ep-save:disabled{opacity:.6;cursor:default}
+/* ===== PLAN NUTRICIONAL (rediseño) ===== */
+.np-serif{font-family:'DM Serif Display',serif;font-weight:400;color:var(--text)}
+.np-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:6px 0 22px}
+.np-btn-light{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:11px;padding:11px 16px;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer}
+.np-btn-dark{display:inline-flex;align-items:center;gap:8px;background:#1c1b1b;color:#fff;border:none;border-radius:11px;padding:11px 18px;font-size:13px;font-weight:700;cursor:pointer}
+.np-btn-icon{width:42px;height:42px;border-radius:11px;border:1px solid var(--border);background:#fff;color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.np-macros{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+@media(max-width:980px){.np-macros{grid-template-columns:1fr 1fr}}
+.np-macro{position:relative;background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px}
+.np-edit{position:absolute;top:16px;right:16px;width:26px;height:26px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text3);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.np-edit:hover{background:var(--bg3);color:var(--text)}
+.np-macro-lbl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.np-macro-val{font-family:'Geist Mono',monospace;font-size:28px;font-weight:600;color:var(--text);letter-spacing:-1px;line-height:1}
+.np-macro-u{font-size:13px;font-weight:500;color:var(--text3);letter-spacing:0;margin-left:2px}
+.np-bar{height:6px;border-radius:4px;background:var(--bg3);overflow:hidden;margin-top:14px}
+.np-bar-fill{height:100%;border-radius:4px}
+.np-grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;align-items:start}
+@media(max-width:980px){.np-grid{grid-template-columns:1fr}}
+.np-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px}
+.np-pref-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border)}
+.np-pref-row:last-child{border-bottom:none}
+.np-pref-ico{color:var(--text2);flex-shrink:0}
+.np-pref-txt{flex:1;font-size:14px;color:var(--text);line-height:1.3}
+.np-badge{font-size:10px;font-weight:700;letter-spacing:.03em;padding:3px 9px;border-radius:999px;flex-shrink:0}
+.np-badge-sev{background:#fee2e2;color:#b91c1c}
+.np-badge-act{background:#d1fae5;color:#047857}
+.np-badge-pref{background:var(--bg3);color:var(--text2)}
+.np-insight{background:#1c1b1b;border-radius:18px;padding:22px}
+.np-insight-eyebrow{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#7cf994}
+.np-insight-link{display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;padding:0}
+.np-link-ghost{display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer}
+.np-link-green{display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:var(--green);font-size:13px;font-weight:700;cursor:pointer}
+.np-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.np-totals{display:flex;align-items:center;gap:26px;flex-wrap:wrap;font-size:14px;color:var(--text2)}
+.np-totals b{color:var(--text);font-weight:700}
+.np-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:1px}
+.np-close-view{background:none;border:none;color:var(--text2);font-size:14px;font-weight:600;cursor:pointer}
+.np-save-send{background:#1c1b1b;color:#fff;border:none;border-radius:13px;padding:15px 26px;font-size:14px;font-weight:700;cursor:pointer}
+.gd-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:18px;padding:28px 24px;display:flex;flex-direction:column}
+.gd-reco{position:absolute;top:18px;right:18px;font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--text3);background:var(--bg3);padding:4px 10px;border-radius:999px}
+.gd-ico{margin-bottom:14px}
+.gd-title{font-size:19px;font-weight:700;color:var(--text);margin-bottom:10px}
+.gd-desc{font-size:13.5px;color:var(--text2);line-height:1.55;margin-bottom:18px;flex:1}
+.gd-btn{border:none;border-radius:12px;padding:14px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;width:100%}
+.bib-item{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--border)}
+.bib-add{width:34px;height:34px;border-radius:50%;background:#1c1b1b;color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.cr-opts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.cr-opt{display:inline-flex;align-items:center;background:var(--bg3);border-radius:11px;overflow:hidden}
+.cr-opt.on{background:#1c1b1b}
+.cr-opt-btn{background:none;border:none;padding:10px 16px;font-size:13.5px;font-weight:700;color:var(--text2);cursor:pointer}
+.cr-opt.on .cr-opt-btn{color:#fff}
+.cr-opt-x{background:#ef4444;color:#fff;border:none;width:22px;height:22px;border-radius:50%;font-size:11px;cursor:pointer;margin-right:7px;display:flex;align-items:center;justify-content:center}
+.cr-opt-add{width:40px;height:40px;border-radius:11px;border:1.5px dashed var(--border2);background:none;color:var(--text3);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cr-opt-add:hover{color:var(--text);border-color:var(--text3)}
+.cr-meals{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1180px){.cr-meals{grid-template-columns:1fr}}
+.cr-meal{border:1px solid var(--border);border-radius:16px;padding:20px}
+.cr-meal-on{border:2px solid #1c1b1b;padding:19px}
+.cr-meal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cr-meal-name{font-size:17px;font-weight:700;color:var(--text)}
+.cr-pencil{width:28px;height:28px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text3);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cr-pencil:hover{color:var(--text);background:var(--bg3)}
+.cr-editing{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green)}
+.cr-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+.cr-iname{font-size:14px;color:var(--text)}
+.cr-g{color:var(--text3)}
+.cr-kcal{font-family:'Geist Mono',monospace;font-size:12.5px;color:var(--text2);white-space:nowrap}
+.cr-empty{padding:14px 0;color:var(--text3);font-size:13px}
+.cr-erow{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)}
+.cr-ename{flex:1;height:36px;border:1.5px solid var(--border);border-radius:9px;padding:0 10px;font-size:13.5px;background:var(--bg2);color:var(--text);outline:none}
+.cr-ename:focus{border-color:var(--green)}
+.cr-eg{display:flex;align-items:center;gap:4px;background:var(--bg3);border-radius:9px;padding:0 10px}
+.cr-eg input{width:46px;height:36px;border:none;background:none;text-align:right;font-family:'Geist Mono',monospace;font-size:13px;color:var(--text);outline:none}
+.cr-eg span{font-size:12px;color:var(--text3)}
+.cr-minus{width:30px;height:30px;border-radius:8px;border:1px solid #fecaca;background:#fef2f2;color:#ef4444;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cr-addlib{width:100%;border:1.5px dashed var(--border2);background:none;border-radius:11px;padding:13px;margin-top:14px;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.cr-addlib:hover{border-color:var(--green);color:var(--green)}
+.cr-meal-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.cr-macros{display:flex;gap:16px;font-size:12px;color:var(--text3)}
+.cr-macros b{font-family:'Geist Mono',monospace;color:var(--text);font-weight:700}
+.cr-meal-kcal{font-family:'Geist Mono',monospace;font-size:14px;font-weight:700;color:var(--text)}
+.cr-cancel{background:none;border:1px solid var(--border);border-radius:9px;padding:9px 14px;font-size:12.5px;font-weight:600;color:var(--text2);cursor:pointer}
+.cr-save{background:var(--green);color:#fff;border:none;border-radius:9px;padding:9px 18px;font-size:12.5px;font-weight:700;cursor:pointer}
 .evo-table.tbl-center{table-layout:fixed}
 .evo-table.tbl-center td{border-bottom:none}
 .evo-table.tbl-center th,.evo-table.tbl-center td{text-align:center}
@@ -16459,6 +16542,375 @@ async function guardarNotasEntrenador(){
   }catch(e){ console.error(e); showToast('✕ Error de conexión'); if(btn){btn.disabled=false;btn.textContent='Guardar y Notificar';} }
 }
 
+// ════════════ PLAN NUTRICIONAL COMPLETO (rediseño · Fase 1) ════════════
+function renderNutricionPlan(c){
+  if(!c) return '';
+  const plan = (c._nutrition && c._nutrition.plan) ? c._nutrition.plan : null;
+  const q = c._questionnaire || {};
+  const fmtFecha = (d)=> d ? new Date(String(d).slice(0,10)+'T00:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'}) : '—';
+  const ultAct = plan && (plan.updated_at||plan.created_at) ? fmtFecha(plan.updated_at||plan.created_at) : '—';
+
+  // Macros
+  const kcal = plan&&plan.kcal_goal!=null?Math.round(plan.kcal_goal):null;
+  const prot = plan&&plan.protein_g!=null?Math.round(plan.protein_g):null;
+  const carb = plan&&plan.carbs_g!=null?Math.round(plan.carbs_g):null;
+  const fat  = plan&&plan.fat_g!=null?Math.round(plan.fat_g):null;
+  const pK=(prot||0)*4, cK=(carb||0)*4, fK=(fat||0)*9; const totK=pK+cK+fK||1;
+  const fillK = kcal? Math.min(100,Math.round(totK/kcal*100)) : (totK>1?100:6);
+  const macroCard=(lbl,val,unidad,fill,color,campo)=>`
+    <div class="np-macro">
+      <button class="np-edit" onclick="editarMacrosNutri()" title="Editar macros"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
+      <div class="np-macro-lbl">${lbl}</div>
+      <div class="np-macro-val">${val!=null?val:'—'}<span class="np-macro-u">${val!=null?unidad:''}</span></div>
+      <div class="np-bar"><div class="np-bar-fill" style="width:${val!=null?fill:0}%;background:${color}"></div></div>
+    </div>`;
+
+  // Preferencias & restricciones (del cuestionario)
+  const prefRows=[];
+  if(q.allergies && String(q.allergies).trim() && !/ningun|no |nada/i.test(q.allergies)) prefRows.push({txt:escHtml(q.allergies),badge:'SEVERA',cls:'sev',ico:'<path d="M4.9 4.9 19 19"/><circle cx="12" cy="12" r="9"/>'});
+  if(q.diseases && String(q.diseases).trim() && !/ningun|no |nada|sano/i.test(q.diseases)) prefRows.push({txt:escHtml(q.diseases),badge:'PATOLOGÍA',cls:'act',ico:'<path d="M11 2h2v6h6v2h-6v6h-2v-6H5V8h6Z"/>'});
+  if(q.disliked_foods && String(q.disliked_foods).trim() && !/ningun|no |nada/i.test(q.disliked_foods)) prefRows.push({txt:escHtml(q.disliked_foods),badge:'EVITAR',cls:'pref',ico:'<path d="M3 2v7a3 3 0 0 0 6 0V2M6 13v9M21 15V2a5 5 0 0 0-3 9v11"/>'});
+  const prefHtml = prefRows.length ? prefRows.map(r=>`
+    <div class="np-pref-row">
+      <span class="np-pref-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${r.ico}</svg></span>
+      <span class="np-pref-txt">${r.txt}</span>
+      <span class="np-badge np-badge-${r.cls}">${r.badge}</span>
+    </div>`).join('') : `<div style="padding:14px 2px;color:var(--text3);font-size:13px">Sin preferencias ni restricciones registradas en el cuestionario.</div>`;
+
+  // TRACC AI Insight
+  const insight = c._nutriInsight || null;
+
+  return `
+    <button class="ep-back" onclick="editPlanVista('dashboard')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> VOLVER AL RESUMEN DEL PLAN</button>
+    <div class="np-head">
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:34px;color:var(--text);line-height:1.05">Plan Nutricional Completo</div>
+        <div style="font-size:13.5px;color:var(--text2);margin-top:7px">Paciente: <b style="color:var(--text)">${escHtml(c.name)}</b> &nbsp;·&nbsp; Última actualización: ${ultAct}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <button class="np-btn-light" onclick="abrirBibliotecaAlimentosModal()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2Zm0 0a2 2 0 0 1 2-2h13"/></svg> Biblioteca de Alimentos</button>
+        <button class="np-btn-dark" onclick="abrirGeneradorDietaIA()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> AI Generate</button>
+        <button class="np-btn-icon" onclick="window.print()" title="Imprimir"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6Z"/></svg></button>
+      </div>
+    </div>
+
+    <div class="np-macros">
+      ${macroCard('DAILY ENERGY', kcal, ' kcal', kcal?100:0, '#1c1b1b')}
+      ${macroCard('PROTEIN', prot, 'g', Math.round(pK/totK*100), 'var(--green)')}
+      ${macroCard('CARBOHYDRATES', carb, 'g', Math.round(cK/totK*100), '#9ca3af')}
+      ${macroCard('FATS', fat, 'g', Math.round(fK/totK*100), '#9ca3af')}
+    </div>
+
+    <div class="np-grid">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="np-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div class="np-serif" style="font-size:22px">Preferencias &amp; Restricciones</div>
+            <button class="np-edit" style="position:static" onclick="editarPreferenciasNutri()" title="Editar preferencias"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
+          </div>
+          ${prefHtml}
+        </div>
+        <div class="np-insight">
+          <div class="np-insight-eyebrow">✦ Tracc AI Insight</div>
+          ${insight&&insight.texto?`<p style="font-size:14.5px;line-height:1.6;color:#e9e7e3;margin:10px 0 16px">"${escHtml(insight.texto)}"</p>
+            <button class="np-insight-link" onclick="toggleAjustesNutri()">Ver ajustes detallados <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div id="np-ajustes" style="display:none;margin-top:14px;border-top:1px solid rgba(255,255,255,.15);padding-top:14px">${(insight.ajustes||[]).map(a=>`<div style="font-size:13px;color:#cfcdc9;margin-bottom:7px;display:flex;gap:8px"><span style="color:#7cf994">›</span>${escHtml(a)}</div>`).join('')||'<div style="font-size:13px;color:#9a9892">Sin ajustes adicionales.</div>'}</div>`
+          :`<p style="font-size:14px;color:#b9b7b3;margin:10px 0 16px">Genera un análisis automático de cómo se ha adaptado el plan a las preferencias y restricciones del cliente.</p>
+            <button class="np-insight-link" id="np-insight-btn" onclick="generarInsightNutri()">Generar análisis con IA <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>`}
+        </div>
+      </div>
+      <div class="np-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:6px">
+          <div class="np-serif" style="font-size:24px">Cronograma de Comidas</div>
+          <div style="display:flex;gap:10px">
+            <button class="np-link-ghost" onclick="abrirBibliotecaAlimentosModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2Z"/></svg> Biblioteca</button>
+            <button class="np-link-green" onclick="abrirGeneradorDietaIA()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> Generar con IA</button>
+          </div>
+        </div>
+        <div style="font-size:11.5px;color:var(--text3);margin-bottom:14px">Opciones de dieta · pulsa el lápiz de cada comida para editarla</div>
+        ${renderCronogramaComidas(c)}
+      </div>
+    </div>
+    <div class="np-footer">
+      <div class="np-totals">
+        <span><span class="np-dot" style="background:var(--green)"></span>Proteína Total: <b>${prot!=null?prot+'g':'—'}</b></span>
+        <span><span class="np-dot" style="background:var(--text3)"></span>Carbohidratos: <b>${carb!=null?carb+'g':'—'}</b></span>
+        <span><span class="np-dot" style="background:var(--text3)"></span>Grasas: <b>${fat!=null?fat+'g':'—'}</b></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px">
+        <button class="np-close-view" onclick="editPlanVista('dashboard')">Cerrar Vista</button>
+        <button class="np-save-send" onclick="guardarPlanNutriEnviar()">Guardar Cambios &amp; Enviar</button>
+      </div>
+    </div>`;
+}
+
+function toggleAjustesNutri(){ const el=document.getElementById('np-ajustes'); if(el) el.style.display = el.style.display==='none'?'block':'none'; }
+
+// Editar los 4 macros objetivo
+function editarMacrosNutri(){
+  const c=currentClient; const plan=c&&c._nutrition&&c._nutrition.plan; if(!plan){ showToast('Este cliente no tiene plan nutricional'); return; }
+  let modal=document.getElementById('modal-macros-nutri');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-macros-nutri'; modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:260;display:flex;align-items:center;justify-content:center;padding:20px'; document.body.appendChild(modal); }
+  const fld=(id,lbl,val,u)=>`<div><div style="font-size:11px;font-weight:600;color:var(--text2);margin-bottom:5px">${lbl}</div><div style="position:relative"><input id="${id}" type="number" min="0" value="${val!=null?val:''}" style="width:100%;height:38px;padding:0 38px 0 12px;border:1.5px solid var(--border);border-radius:9px;font-size:14px;background:var(--bg2);color:var(--text);box-sizing:border-box"><span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--text3)">${u}</span></div></div>`;
+  modal.innerHTML=`<div style="background:var(--bg2);border-radius:18px;width:420px;max-width:100%;box-shadow:0 24px 60px rgba(0,0,0,.25);overflow:hidden">
+    <div style="padding:16px 20px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between"><div style="font-size:14px;font-weight:700;color:var(--text)">Objetivos de macros</div><button onclick="document.getElementById('modal-macros-nutri').style.display='none'" style="width:28px;height:28px;border-radius:8px;background:var(--bg);border:1.5px solid var(--border);cursor:pointer;color:var(--text3);font-size:14px">✕</button></div>
+    <div style="padding:18px 20px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      ${fld('mn-kcal','Calorías', plan.kcal_goal!=null?Math.round(plan.kcal_goal):'', 'kcal')}
+      ${fld('mn-prot','Proteína', plan.protein_g!=null?Math.round(plan.protein_g):'', 'g')}
+      ${fld('mn-carb','Carbohidratos', plan.carbs_g!=null?Math.round(plan.carbs_g):'', 'g')}
+      ${fld('mn-fat','Grasas', plan.fat_g!=null?Math.round(plan.fat_g):'', 'g')}
+    </div>
+    <div style="padding:0 20px 18px"><button id="mn-save" onclick="guardarMacrosNutri()" style="width:100%;height:40px;border-radius:9px;background:var(--green);border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer">Guardar macros</button></div>
+  </div>`;
+  modal.style.display='flex';
+}
+async function guardarMacrosNutri(){
+  const c=currentClient; const plan=c&&c._nutrition&&c._nutrition.plan; if(!plan) return;
+  const num=id=>{ const v=(document.getElementById(id)?.value||'').trim(); if(v==='')return null; const n=Number(v); return (isNaN(n)||n<0)?null:Math.round(n); };
+  const kcal=num('mn-kcal'),prot=num('mn-prot'),carb=num('mn-carb'),fat=num('mn-fat');
+  const btn=document.getElementById('mn-save'); if(btn){btn.disabled=true;btn.textContent='Guardando…';}
+  try{
+    const {error}=await sb.from('nutrition_plans').update({kcal_goal:kcal,protein_g:prot,carbs_g:carb,fat_g:fat}).eq('id',plan.id);
+    if(error){ console.error('guardarMacrosNutri:',error); showToast('✕ No se pudo guardar'); if(btn){btn.disabled=false;btn.textContent='Guardar macros';} return; }
+    plan.kcal_goal=kcal; plan.protein_g=prot; plan.carbs_g=carb; plan.fat_g=fat;
+    document.getElementById('modal-macros-nutri').style.display='none';
+    renderClientPanel(); showToast('✓ Macros actualizados');
+  }catch(e){ console.error(e); showToast('✕ Error de conexión'); if(btn){btn.disabled=false;btn.textContent='Guardar macros';} }
+}
+
+// Editar preferencias & restricciones (cuestionario)
+function editarPreferenciasNutri(){
+  const c=currentClient; if(!c) return; const q=c._questionnaire||{};
+  let modal=document.getElementById('modal-pref-nutri');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-pref-nutri'; modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:260;display:flex;align-items:center;justify-content:center;padding:20px'; document.body.appendChild(modal); }
+  const fld=(id,lbl,val,ph)=>`<div><div style="font-size:11px;font-weight:600;color:var(--text2);margin-bottom:5px">${lbl}</div><input id="${id}" value="${escHtml(val||'')}" placeholder="${ph}" style="width:100%;height:38px;padding:0 12px;border:1.5px solid var(--border);border-radius:9px;font-size:13px;background:var(--bg2);color:var(--text);box-sizing:border-box"></div>`;
+  modal.innerHTML=`<div style="background:var(--bg2);border-radius:18px;width:440px;max-width:100%;box-shadow:0 24px 60px rgba(0,0,0,.25);overflow:hidden">
+    <div style="padding:16px 20px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between"><div style="font-size:14px;font-weight:700;color:var(--text)">Preferencias y restricciones</div><button onclick="document.getElementById('modal-pref-nutri').style.display='none'" style="width:28px;height:28px;border-radius:8px;background:var(--bg);border:1.5px solid var(--border);cursor:pointer;color:var(--text3);font-size:14px">✕</button></div>
+    <div style="padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+      ${fld('pn-allergies','Alergias / Intolerancias', q.allergies, 'Ej: Intolerancia a la lactosa')}
+      ${fld('pn-diseases','Patologías / Condiciones', q.diseases, 'Ej: Hipertensión')}
+      ${fld('pn-disliked','Alimentos a evitar', q.disliked_foods, 'Ej: Mariscos, brócoli')}
+      <button id="pn-save" onclick="guardarPreferenciasNutri()" style="height:40px;border-radius:9px;background:var(--green);border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px">Guardar</button>
+    </div>
+  </div>`;
+  modal.style.display='flex';
+}
+async function guardarPreferenciasNutri(){
+  const c=currentClient; if(!c) return;
+  const v=id=>(document.getElementById(id)?.value||'').trim()||null;
+  const payload={ allergies:v('pn-allergies'), diseases:v('pn-diseases'), disliked_foods:v('pn-disliked') };
+  const btn=document.getElementById('pn-save'); if(btn){btn.disabled=true;btn.textContent='Guardando…';}
+  try{
+    const {error}=await sb.from('client_questionnaire').update(payload).eq('client_id',c.id);
+    if(error){ console.error('guardarPreferenciasNutri:',error); showToast('✕ No se pudo guardar'); if(btn){btn.disabled=false;btn.textContent='Guardar';} return; }
+    c._questionnaire=Object.assign({},c._questionnaire,payload);
+    document.getElementById('modal-pref-nutri').style.display='none';
+    renderClientPanel(); showToast('✓ Preferencias actualizadas');
+  }catch(e){ console.error(e); showToast('✕ Error de conexión'); if(btn){btn.disabled=false;btn.textContent='Guardar';} }
+}
+
+// Generar el insight de IA analizando preferencias/restricciones y plan
+async function generarInsightNutri(){
+  const c=currentClient; if(!c) return; const q=c._questionnaire||{}; const plan=c._nutrition&&c._nutrition.plan;
+  const btn=document.getElementById('np-insight-btn'); if(btn){ btn.disabled=true; btn.textContent='Analizando…'; }
+  const datos={
+    objetivo:c.goal||'—',
+    alergias:q.allergies||null, patologias:q.diseases||null, evita:q.disliked_foods||null,
+    macros: plan?{kcal:plan.kcal_goal,proteina:plan.protein_g,carbohidratos:plan.carbs_g,grasas:plan.fat_g}:null
+  };
+  const system='Eres un nutricionista experto. Analiza las preferencias y restricciones del cliente frente a su plan nutricional y explica brevemente cómo se ha adaptado el plan. Devuelve EXCLUSIVAMENTE un JSON: {"texto":"1-3 frases resumiendo la adaptación del plan a sus restricciones","ajustes":["ajuste concreto 1","ajuste concreto 2"]}. No inventes restricciones que no se den.';
+  const user='Datos del cliente:\n'+JSON.stringify(datos,null,2);
+  try{
+    const raw=await callIA(system,user,1500,true);
+    let p; try{ p=JSON.parse(raw); }catch(e){ const m=raw.match(/\{[\s\S]*\}/); p=m?JSON.parse(m[0]):null; }
+    if(!p||!p.texto){ showToast('✕ La IA no devolvió un análisis válido'); if(btn){btn.disabled=false;btn.textContent='Generar análisis con IA';} return; }
+    c._nutriInsight={ texto:p.texto, ajustes:Array.isArray(p.ajustes)?p.ajustes:[] };
+    renderClientPanel(); showToast('✓ Análisis generado');
+  }catch(e){ console.error('generarInsightNutri:',e); showToast('✕ '+(e&&e.message?e.message:'Error al generar')); if(btn){btn.disabled=false;btn.textContent='Generar análisis con IA';} }
+}
+
+// Guardar y enviar el plan al cliente
+function guardarPlanNutriEnviar(){
+  const c=currentClient; if(!c) return;
+  const plan=c._nutrition&&c._nutrition.plan;
+  if(plan&&plan.id){ sb.from('nutrition_plans').update({seen_by_client:false}).eq('id',plan.id).then(()=>{},()=>{}); }
+  showToast('✓ Plan guardado · el cliente será notificado');
+}
+
+// ── Cronograma de Comidas (rediseño · reutiliza edición/guardado existentes) ──
+function renderCronogramaComidas(c){
+  const nut=c&&c._nutrition;
+  if(!nut||!nut.plan) return seccionPlanNutricional(c);
+  const opciones=nut.options||[];
+  if(typeof editNutriOpcion==='undefined') return seccionPlanNutricional(c);
+  if(editNutriOpcion>=opciones.length) editNutriOpcion=0;
+
+  const pills = opciones.map((o,i)=>{
+    const act=i===editNutriOpcion;
+    return `<div class="cr-opt${act?' on':''}">
+      <button class="cr-opt-btn" onclick="seleccionarOpcionNutri(${i})">Opción ${o.option_number??(i+1)}</button>
+      ${opciones.length>1?`<button class="cr-opt-x" onclick="event.stopPropagation();borrarOpcionNutri(${i})" title="Eliminar opción">✕</button>`:''}
+    </div>`;
+  }).join('');
+  const addPill=`<button class="cr-opt-add" onclick="crearOpcionDietaManual()" title="Añadir opción"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>`;
+
+  const opt=opciones[editNutriOpcion]||{};
+  const meals=opt.meals||{};
+  const claves=COMIDAS_ORDEN.filter(k=>meals[k]).concat(Object.keys(meals).filter(k=>!COMIDAS_ORDEN.includes(k)));
+  const pencil='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+  const libIco='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>';
+
+  const mealCard=(comida)=>{
+    const items=(meals[comida]&&meals[comida].items)||[];
+    const editing=(typeof editandoComida!=='undefined')&&editandoComida===comida;
+    if(editing){
+      const bor=(typeof comidaBorrador!=='undefined'&&comidaBorrador)||[];
+      const tot=bor.reduce((a,it)=>({k:a.k+(+it.kcal||0),p:a.p+(+it.protein||0),c:a.c+(+it.carbs||0),f:a.f+(+it.fat||0)}),{k:0,p:0,c:0,f:0});
+      const rows=bor.map((it,idx)=>`
+        <div class="cr-erow">
+          <input class="cr-ename" value="${escHtml(it.name||'')}" onchange="cambioAlimentoBorrador(${idx},'name',this.value)" placeholder="Alimento">
+          <div class="cr-eg"><input value="${it.grams!=null?it.grams:''}" onchange="cambioAlimentoBorrador(${idx},'grams',this.value)" placeholder="g"><span>g</span></div>
+          <button class="cr-minus" onclick="quitarAlimentoBorrador(${idx})" title="Quitar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg></button>
+        </div>`).join('');
+      return `<div class="cr-meal cr-meal-on">
+        <div class="cr-meal-h"><div class="cr-meal-name">${escHtml(comida)}</div><span class="cr-editing">${pencil} Editando Opción ${opt.option_number??(editNutriOpcion+1)}</span></div>
+        ${rows||'<div class="cr-empty">Aún no hay alimentos</div>'}
+        <button class="cr-addlib" onclick="abrirBibliotecaAlimentosModal()">${libIco} Añadir desde Biblioteca</button>
+        <div class="cr-meal-foot">
+          <div class="cr-macros"><span>P <b>${Math.round(tot.p)}g</b></span><span>C <b>${Math.round(tot.c)}g</b></span><span>F <b>${Math.round(tot.f)}g</b></span></div>
+          <div style="display:flex;gap:8px"><button class="cr-cancel" onclick="cancelarComida()">Cancelar</button><button class="cr-save" onclick="guardarComida('${escHtml(comida).replace(/'/g,"\\'")}')">Guardar</button></div>
+        </div>
+      </div>`;
+    }
+    const tot=items.reduce((a,it)=>({k:a.k+(+it.kcal||0),p:a.p+(+it.protein||0),c:a.c+(+it.carbs||0),f:a.f+(+it.fat||0)}),{k:0,p:0,c:0,f:0});
+    const itemsHtml=items.length?items.map(it=>`<div class="cr-item"><span class="cr-iname">${escHtml(it.name||'')}${it.grams!=null?` <span class="cr-g">· ${it.grams} g</span>`:''}</span><span class="cr-kcal">${Math.round(+it.kcal||0)} kcal</span></div>`).join('')
+      :'<div class="cr-empty">Sin alimentos asignados</div>';
+    return `<div class="cr-meal">
+      <div class="cr-meal-h"><div class="cr-meal-name">${escHtml(comida)}</div><button class="cr-pencil" onclick="editarComida('${escHtml(comida).replace(/'/g,"\\'")}')" title="Editar comida">${pencil}</button></div>
+      ${itemsHtml}
+      <button class="cr-addlib" onclick="editarComida('${escHtml(comida).replace(/'/g,"\\'")}')">${libIco} Añadir desde Biblioteca</button>
+      <div class="cr-meal-foot"><div class="cr-macros"><span>P <b>${Math.round(tot.p)}g</b></span><span>C <b>${Math.round(tot.c)}g</b></span><span>F <b>${Math.round(tot.f)}g</b></span></div><div class="cr-meal-kcal">${Math.round(tot.k)} kcal</div></div>
+    </div>`;
+  };
+  const cards=claves.length?claves.map(mealCard).join('')
+    :`<div class="cr-empty" style="padding:34px;text-align:center">Esta opción no tiene comidas todavía. Usa "Generar con IA" o crea las comidas.</div>`;
+
+  return `
+    <div class="cr-opts">${pills}${addPill}</div>
+    <div class="cr-meals">${cards}</div>
+    <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:16px">${tiraBibliotecaAlimentos()}${panelBibliotecaHtml()}</div>
+  `;
+}
+
+// ── Modal: Generador de Dieta con IA ──
+function abrirGeneradorDietaIA(){
+  let modal=document.getElementById('modal-gen-dieta');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-gen-dieta'; modal.className='modal-overlay'; document.body.appendChild(modal); }
+  modal.innerHTML=`<div class="modal-box" style="max-width:760px;position:relative">
+    <button onclick="document.getElementById('modal-gen-dieta').style.display='none'" style="position:absolute;top:18px;right:18px;width:30px;height:30px;border-radius:9px;border:none;background:none;cursor:pointer;color:var(--text3);font-size:18px">✕</button>
+    <div style="padding:38px 40px 32px;text-align:center">
+      <div style="font-family:'DM Sans',sans-serif;font-size:34px;font-weight:700;color:var(--text);letter-spacing:-1px">Generador de Dieta con IA</div>
+      <div style="font-size:14.5px;color:var(--text2);max-width:520px;margin:12px auto 30px;line-height:1.5">Elige cómo te gustaría crear el plan de comidas. La IA optimizará el plan según el objetivo y las restricciones del cliente.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left">
+        <div class="gd-card">
+          <span class="gd-reco">Recomendado</span>
+          <div class="gd-ico" style="color:var(--green)"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg></div>
+          <div class="gd-title">Generado Totalmente por IA</div>
+          <div class="gd-desc">Construye un plan de comidas completo desde cero, explorando recetas y alimentos adaptados a sus necesidades nutricionales.</div>
+          <button class="gd-btn" style="background:#0f4c4c" onclick="genDietaDesde('ia')">Generar Ahora</button>
+        </div>
+        <div class="gd-card">
+          <div class="gd-ico" style="color:#b45309"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2Z"/><path d="M9 11l2 2 4-4"/></svg></div>
+          <div class="gd-title">Prioridad de Biblioteca</div>
+          <div class="gd-desc">Usa los alimentos guardados y el historial como base. La IA rellenará los huecos para cumplir con los objetivos.</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#b45309;margin-bottom:14px"><span style="width:6px;height:6px;border-radius:50%;background:#b45309"></span>Prioriza tus alimentos guardados</div>
+          <button class="gd-btn" style="background:#b9603a" onclick="genDietaDesde('biblioteca')">Continuar con Biblioteca</button>
+        </div>
+      </div>
+      <div style="font-size:12.5px;color:var(--text3);margin-top:24px;display:flex;align-items:center;justify-content:center;gap:7px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Ajusta preferencias y restricciones con el lápiz de "Preferencias & Restricciones".</div>
+    </div>
+  </div>`;
+  modal.style.display='flex';
+  modal.onclick=(e)=>{ if(e.target===modal) modal.style.display='none'; };
+}
+function genDietaDesde(fuente){
+  if(typeof IA!=='undefined') IA.fuenteDieta = fuente;
+  const m=document.getElementById('modal-gen-dieta'); if(m) m.style.display='none';
+  if(typeof iaGenerarDieta==='function') iaGenerarDieta();
+}
+
+// ── Modal: Biblioteca de Alimentos ──
+let _bibCat='todos', _bibQuery='';
+function abrirBibliotecaAlimentosModal(){
+  _bibCat='todos'; _bibQuery='';
+  let modal=document.getElementById('modal-bib-alimentos');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-bib-alimentos'; modal.className='modal-overlay'; document.body.appendChild(modal); }
+  modal.style.display='flex';
+  modal.onclick=(e)=>{ if(e.target===modal) modal.style.display='none'; };
+  renderBibAlimentos();
+}
+function _bibCatMatch(grupo, cat){
+  const g=(grupo||'').toLowerCase();
+  if(cat==='todos') return true;
+  if(cat==='proteinas') return /prote|carne|pescad|huevo|lácteo|lacteo|pollo|pavo/.test(g);
+  if(cat==='carbohidratos') return /carbo|cereal|arroz|pasta|pan|patata|fruta|legumbre/.test(g);
+  if(cat==='grasas') return /grasa|aceite|fruto seco|frutos secos|aguacate|semilla/.test(g);
+  if(cat==='vegetales') return /verdura|vegetal|hortaliza|ensalada/.test(g);
+  return true;
+}
+function bibSetCat(cat){ _bibCat=cat; renderBibAlimentos(); }
+function bibSearch(v){ _bibQuery=(v||'').toLowerCase(); renderBibAlimentos(); }
+function renderBibAlimentos(){
+  const modal=document.getElementById('modal-bib-alimentos'); if(!modal) return;
+  const foods=(typeof FOOD_LIBRARY!=='undefined'?FOOD_LIBRARY:[])||[];
+  const cats=[['todos','TODOS'],['proteinas','PROTEÍNAS'],['carbohidratos','CARBOHIDRATOS'],['grasas','GRASAS'],['vegetales','VEGETALES']];
+  const filtrados=foods.filter(f=>_bibCatMatch(f.food_group,_bibCat) && (!_bibQuery || (f.name||'').toLowerCase().includes(_bibQuery)));
+  const items = filtrados.length ? filtrados.map(f=>`
+    <div class="bib-item">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;font-weight:600;color:var(--text)">${escHtml(f.name||'')}</div>
+        <div style="font-size:12px;color:var(--text3);font-family:'Geist Mono',monospace;margin-top:3px">${f.kcal_per_100g??'—'} kcal · P ${f.protein_g??0} · C ${f.carbs_g??0} · G ${f.fat_g??0} <span style="color:var(--text3)">/100g</span></div>
+      </div>
+      <button class="bib-add" onclick="bibAddFood('${escHtml(f.id)}')" title="Añadir a la comida en edición"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>
+    </div>`).join('') : `<div style="padding:40px;text-align:center;color:var(--text3);font-size:13px">${foods.length?'Ningún alimento coincide con la búsqueda.':'Aún no tienes alimentos guardados. Créalos en el editor de comidas.'}</div>`;
+  modal.innerHTML=`<div class="modal-box" style="max-width:760px;height:80vh;display:flex;flex-direction:column">
+    <div style="padding:22px 26px 0;display:flex;align-items:center;gap:16px">
+      <div style="font-family:'DM Serif Display',serif;font-size:24px;color:var(--text);white-space:nowrap">Biblioteca de Alimentos</div>
+      <div style="flex:1;position:relative"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:14px;top:50%;transform:translateY(-50%)"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg><input oninput="bibSearch(this.value)" value="${escHtml(_bibQuery)}" placeholder="Buscar alimentos..." style="width:100%;height:42px;padding:0 14px 0 40px;border:1px solid var(--border);border-radius:11px;font-size:14px;background:var(--bg3);color:var(--text);box-sizing:border-box;outline:none"></div>
+      <button onclick="document.getElementById('modal-bib-alimentos').style.display='none'" style="width:30px;height:30px;border:none;background:none;cursor:pointer;color:var(--text3);font-size:18px">✕</button>
+    </div>
+    <div style="padding:16px 26px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border)">
+      ${cats.map(([k,l])=>`<button onclick="bibSetCat('${k}')" style="padding:8px 16px;border-radius:999px;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.03em;${_bibCat===k?'background:#1c1b1b;color:#fff':'background:var(--bg3);color:var(--text2)'}">${l}</button>`).join('')}
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:8px 26px">${items}</div>
+    <div style="padding:16px 26px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:flex-end;gap:18px">
+      <button onclick="document.getElementById('modal-bib-alimentos').style.display='none'" style="background:none;border:none;color:var(--text2);font-size:14px;font-weight:600;cursor:pointer">Cerrar Biblioteca</button>
+      <button onclick="document.getElementById('modal-bib-alimentos').style.display='none'" style="background:#1c1b1b;color:#fff;border:none;border-radius:11px;padding:13px 24px;font-size:13.5px;font-weight:700;cursor:pointer">Finalizar Selección</button>
+    </div>
+  </div>`;
+}
+function bibAddFood(id){
+  const foods=(typeof FOOD_LIBRARY!=='undefined'?FOOD_LIBRARY:[])||[];
+  const f=foods.find(x=>String(x.id)===String(id)); if(!f) return;
+  // Si hay una comida en edición, añadir el alimento; si no, avisar
+  if(typeof comidaBorrador!=='undefined' && comidaBorrador && typeof anadirAlimentoBorrador==='function'){
+    try{
+      anadirAlimentoBorrador();
+      const arr=comidaBorrador.items||comidaBorrador.alimentos;
+      if(Array.isArray(arr)&&arr.length){
+        const it=arr[arr.length-1];
+        it.name=f.name; it.nombre=f.name; it._fromLib=true;
+        it._per100={kcal:f.kcal_per_100g,protein:f.protein_g,carbs:f.carbs_g,fat:f.fat_g};
+        it.grams=100; it.kcal=Math.round(f.kcal_per_100g||0); it.protein=+(f.protein_g||0); it.carbs=+(f.carbs_g||0); it.fat=+(f.fat_g||0);
+      }
+      renderClientPanel();
+      showToast('✓ '+f.name+' añadido');
+    }catch(e){ console.error(e); showToast('Abre una comida y pulsa "Añadir desde Biblioteca"'); }
+  } else {
+    showToast('Abre una comida (✎) y pulsa "Añadir desde Biblioteca" para insertarlo');
+  }
+}
+
 function renderEditar() {
   const c = currentClient; if(!c) return '';
   const bandaBorrador = bandaModoBorradorHtml(c);
@@ -16470,9 +16922,7 @@ function renderEditar() {
       ${seccionPlanEntreno(c)}`;
   }
   if(editView==='nutricion'){
-    return `${bandaBorrador}
-      <button class="ep-back" onclick="editPlanVista('dashboard')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> VOLVER AL RESUMEN DEL PLAN</button>
-      ${seccionPlanNutricional(c)}`;
+    return `${bandaBorrador}${renderNutricionPlan(c)}`;
   }
 
   // ── DASHBOARD ──
@@ -16501,6 +16951,7 @@ function renderEditar() {
     </div>`;
   }).join('');
   const enfoque = (c._mesocycle&&c._mesocycle.name) ? c._mesocycle.name : (c.goal||'—');
+  const entrenosSem = split.length ? split.filter(t=>!off(t)).length : null;
   const exs = (c._training && Array.isArray(c._training.exercises)) ? c._training.exercises : [];
   const totalSeries = exs.reduce((a,e)=> a + (typeof e.sets==='number'?e.sets:(parseInt(e.sets,10)||0)), 0);
   const volumen = totalSeries>0 ? totalSeries : '—';
@@ -16510,9 +16961,11 @@ function renderEditar() {
   const macro = (v,u)=> (v!=null&&v!=='') ? (Number(v).toLocaleString('es-ES')+(u?' '+u:'')) : '—';
   const opts = (c._nutrition && Array.isArray(c._nutrition.options)) ? c._nutrition.options : [];
   let distrib = '—';
-  if(opts[0] && Array.isArray(opts[0].meals) && opts[0].meals.length){
-    const ms = opts[0].meals; const n = ms.length;
-    const pre = ms.filter(m=>m && /pre.?entreno|pre.?workout|preentreno/i.test(m.name||'')).length;
+  const optConMeals = opts.find(o => o && o.meals && Object.keys(o.meals).length) || opts[0];
+  if(optConMeals && optConMeals.meals && Object.keys(optConMeals.meals).length){
+    const keys = Object.keys(optConMeals.meals);
+    const n = keys.length;
+    const pre = keys.filter(k => /pre.?entreno|pre.?workout|preentreno/i.test(k)).length;
     const mains = n - pre;
     distrib = mains + ' comida' + (mains===1?'':'s') + (pre>0 ? ' + pre-entreno' : '');
   }
@@ -16537,20 +16990,20 @@ function renderEditar() {
       <div class="ep-card">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:24px">
           <div class="ep-serif" style="font-size:28px;max-width:200px;line-height:1.1">Plan de Entrenamiento</div>
-          <button class="ep-btn-outline" onclick="editPlanVista('entreno')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Ver Plan Completo</button>
+          <button class="ep-btn-outline" onclick="editPlanVista('entreno')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Ver Plan</button>
         </div>
         <div class="ep-eyebrow" style="margin-bottom:14px">Distribución Semanal</div>
         <div style="display:flex;justify-content:space-between;max-width:420px;margin-bottom:22px">${diasHtml}</div>
         <div class="ep-box">
-          <div><div class="ep-box-lbl">Enfoque</div><div class="ep-box-val">${escHtml(enfoque)}</div></div>
+          <div><div class="ep-box-lbl">Entrenos/sem</div><div class="ep-box-val">${entrenosSem!=null?entrenosSem:'—'} <span style="font-size:13px;font-weight:500;color:var(--text3)">${entrenosSem===1?'día':'días'}</span></div></div>
           <div style="text-align:right"><div class="ep-box-lbl">Volumen</div><div class="ep-box-val">${volumen} <span style="font-size:13px;font-weight:500;color:var(--text3)">Series/Sem</span></div></div>
         </div>
-        <button class="ep-btn-dark" onclick="editPlanVista('entreno')" style="width:100%;margin-top:18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11M21 21l-1-1M3 3l1 1M18 22l4-4M2 6l4-4M3 10l7-7M14 21l7-7"/></svg> Biblioteca de Ejercicios</button>
+        <button class="ep-btn-dark" onclick="editPlanVista('entreno')" style="width:100%;margin-top:auto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11M21 21l-1-1M3 3l1 1M18 22l4-4M2 6l4-4M3 10l7-7M14 21l7-7"/></svg> Biblioteca de Ejercicios</button>
       </div>
 
       <div class="ep-card">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px">
-          <div style="display:flex;align-items:center;gap:12px"><div class="ep-serif" style="font-size:28px">Nutrición</div><span class="ep-pill-vol">${fase}</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><div class="ep-serif" style="font-size:28px">Nutrición</div></div>
           <button class="ep-btn-outline" onclick="editPlanVista('nutricion')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Ver Plan</button>
         </div>
         <div class="ep-eyebrow" style="margin-bottom:16px">Resumen de Macros</div>
@@ -16561,7 +17014,7 @@ function renderEditar() {
           <div style="display:flex;justify-content:space-between"><span class="ep-macro-lbl">Grasas</span><span class="ep-macro-val">${macro(plan&&plan.fat_g,'g')}</span></div>
         </div>
         <div class="ep-box"><div><div class="ep-box-lbl">Distribución</div><div class="ep-box-val">${distrib}</div></div></div>
-        <button class="ep-btn-dark" onclick="abrirBibliotecaAlimentos()" style="width:100%;margin-top:18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2M5 2v20M21 15V2a5 5 0 0 0-3 9v9"/></svg> Biblioteca de Alimentos</button>
+        <button class="ep-btn-dark" onclick="abrirBibliotecaAlimentos()" style="width:100%;margin-top:auto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2M5 2v20M21 15V2a5 5 0 0 0-3 9v9"/></svg> Biblioteca de Alimentos</button>
       </div>
     </div>
 
