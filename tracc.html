@@ -519,6 +519,15 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM San
 .gri-quote-av{width:30px;height:30px;border-radius:50%;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text3)}
 .gri-cancel{background:none;border:none;cursor:pointer;color:var(--text2);font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
 .gri-confirm{height:46px;padding:0 22px;border:none;border-radius:13px;background:#1c1b1b;color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+/* ── Modal Plantillas guardadas (buscador + listado) ── */
+.modal-box.plm-box{max-width:560px;width:100%;display:flex;flex-direction:column;max-height:84vh;padding:0;overflow:hidden}
+.plm-head{padding:22px 24px 18px;border-bottom:1px solid var(--border)}
+.plm-x{background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px}
+.plm-search{width:100%;box-sizing:border-box;height:44px;border:1.5px solid var(--border);border-radius:12px;background:var(--bg);padding:0 14px 0 40px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text)}
+.plm-body{flex:1;overflow:auto;padding:18px 24px 22px}
+.plm-item{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:13px;padding:12px 14px;margin-bottom:10px}
+.plm-apply{height:34px;padding:0 16px;border:none;border-radius:9px;cursor:pointer;background:var(--green);color:#fff;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif}
+.plm-del{height:34px;width:34px;border:1.5px solid var(--border);border-radius:9px;cursor:pointer;background:var(--bg2);color:var(--red);font-size:13px}
 .bib-item{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--border)}
 .bib-add{width:34px;height:34px;border-radius:50%;background:#1c1b1b;color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 .cr-opts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
@@ -14807,7 +14816,7 @@ function seccionPlanEntreno(c){
           <button class="ept-genai" onclick="abrirGenerarRutinaIAModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> Generar con IA</button>
           <div class="ept-exh-tpl">
             <button class="ept-addex" onclick="guardarSesionComoPlantilla()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar plantilla</button>
-            <button class="ept-addex" onclick="abrirPlantillas()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Buscar plantilla</button>
+            <button class="ept-addex" onclick="abrirPlantillasModal()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Buscar plantilla</button>
           </div>
         </div>
       </div>
@@ -14841,7 +14850,7 @@ function seccionPlanEntreno(c){
           <details class="ept-menu">
             <summary class="ept-toolbtn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="4" width="8" height="4" rx="1"/><path d="M8 6H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2"/></svg> Plantillas <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
             <div class="ept-menu-pop">
-              <button onclick="this.closest('details').removeAttribute('open');abrirPlantillas()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Buscar plantilla</button>
+              <button onclick="this.closest('details').removeAttribute('open');abrirPlantillasModal()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Buscar plantilla</button>
               <button onclick="this.closest('details').removeAttribute('open');guardarPlanComoPlantilla()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar plan completo</button>
             </div>
           </details>
@@ -14851,7 +14860,6 @@ function seccionPlanEntreno(c){
       <button class="ept-headbtn" onclick="abrirBibliotecaEjerciciosModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11M21 21l-1-1M3 3l1 1M18 22l4-4M2 6l4-4M3 10l7-7M14 21l7-7"/></svg> Biblioteca de<br>Ejercicios</button>
     </div>
     ${panelMesocicloHtml(c)}
-    ${panelPlantillasHtml(c)}
     <div class="ept-hr"></div>
     ${splitHtml}
     <div class="ept-hr"></div>
@@ -14885,10 +14893,7 @@ function tipoSesionActual(c){
 }
 
 // Abre / cierra el panel de plantillas
-function abrirPlantillas(){
-  mostrandoPlantillas = !mostrandoPlantillas;
-  renderClientPanel();
-}
+function abrirPlantillas(){ abrirPlantillasModal(); }
 
 // HTML del panel de plantillas guardadas
 function panelPlantillasHtml(c){
@@ -17515,6 +17520,54 @@ function renderGenRutinaModal(){
       <button class="gri-cancel" onclick="griClose()">Cancelar</button>
       <button class="gri-confirm" onclick="griConfirmar()">Confirmar Selección</button>
     </div>
+  </div>`;
+}
+
+// ── Cerrar menús desplegables (details.ept-menu) al hacer clic fuera ──
+if(typeof window!=='undefined' && !window.__eptMenuCloser){
+  window.__eptMenuCloser=true;
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('details.ept-menu[open]').forEach(function(d){ if(!d.contains(e.target)) d.removeAttribute('open'); });
+  });
+}
+
+// ── Modal: Plantillas guardadas (buscador + listado) ──
+let _plmQuery='';
+function abrirPlantillasModal(){
+  _plmQuery='';
+  let modal=document.getElementById('modal-plantillas');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-plantillas'; modal.className='modal-overlay'; document.body.appendChild(modal); }
+  modal.style.display='flex';
+  modal.onclick=(e)=>{ if(e.target===modal) modal.style.display='none'; };
+  renderPlantillasModal();
+}
+function plmSearch(v){ _plmQuery=v; renderPlantillasModal(); const i=document.getElementById('plm-search'); if(i){ i.focus(); try{ i.setSelectionRange(i.value.length,i.value.length); }catch(e){} } }
+async function plmAplicar(id){ await aplicarPlantilla(id); const m=document.getElementById('modal-plantillas'); if(m) m.style.display='none'; }
+async function plmBorrar(id){ await borrarPlantilla(id); const m=document.getElementById('modal-plantillas'); if(m && m.style.display!=='none') renderPlantillasModal(); }
+function renderPlantillasModal(){
+  const modal=document.getElementById('modal-plantillas'); if(!modal) return;
+  const all=(typeof TRAINING_TEMPLATES!=='undefined'?TRAINING_TEMPLATES:[]).filter(t=>!_iaEsPlantillaConfig(t));
+  const q=(_plmQuery||'').trim().toLowerCase();
+  const tpls=q?all.filter(t=>(t.name||'').toLowerCase().includes(q)):all;
+  const lista=tpls.length?tpls.map(t=>{
+    const esPlan=Array.isArray(t.split)&&t.split.length>0;
+    const numEj=Array.isArray(t.exercises)?t.exercises.length:0;
+    const etiqueta=esPlan?`Plan completo · ${t.split.length} días · ${numEj} ejercicios`:`Sesión · ${numEj} ejercicios`;
+    return `<div class="plm-item">
+      <div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:700;color:var(--text)">${escHtml(t.name||'Plantilla')}</div><div style="font-size:11.5px;color:var(--text3);margin-top:2px">${etiqueta}</div></div>
+      <button class="plm-apply" onclick="plmAplicar('${escHtml(t.id)}')">Aplicar</button>
+      <button class="plm-del" onclick="plmBorrar('${escHtml(t.id)}')" title="Eliminar">&#10005;</button>
+    </div>`;
+  }).join(''):`<div style="text-align:center;color:var(--text3);font-size:13.5px;padding:38px 10px;line-height:1.6">${all.length?'No hay plantillas que coincidan con la búsqueda.':'Aún no tienes plantillas guardadas.<br>Usa "Guardar plantilla" o "Guardar plan completo".'}</div>`;
+  modal.innerHTML=`<div class="modal-box plm-box">
+    <div class="plm-head">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between">
+        <div><div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--text)">Plantillas guardadas</div><div style="font-size:13px;color:var(--text2);margin-top:4px">Aplica una sesión o un plan completo guardado.</div></div>
+        <button class="plm-x" onclick="document.getElementById('modal-plantillas').style.display='none'">✕</button>
+      </div>
+      <div style="position:relative;margin-top:16px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:13px;top:50%;transform:translateY(-50%)"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="plm-search" class="plm-search" value="${escHtml(_plmQuery)}" placeholder="Buscar plantilla por nombre…" oninput="plmSearch(this.value)"></div>
+    </div>
+    <div class="plm-body">${lista}</div>
   </div>`;
 }
 
