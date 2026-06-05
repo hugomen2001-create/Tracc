@@ -319,6 +319,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM San
 .ept-grid{display:grid;grid-template-columns:1fr 330px;gap:20px;align-items:start}
 @media(max-width:920px){.ept-grid{grid-template-columns:1fr}}
 .ept-card{display:flex;align-items:center;gap:16px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:15px 17px;margin-bottom:13px}
+.ept-cmain{flex:1;min-width:0}
+.ept-stats{display:flex;align-items:center;gap:30px;flex-shrink:0}
+.ept-stat{text-align:center}
+@media(max-width:680px){.ept-stats{gap:14px}}
+.ept-aiopt{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 16px;border:1.5px solid var(--green);border-radius:11px;background:var(--bg2);color:var(--green);font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}
+.modal-box.aio-box{max-width:460px;width:100%;padding:28px;display:flex;flex-direction:column}
 .ept-thumb{width:72px;height:58px;border-radius:11px;background:#1c1b1b;flex-shrink:0;position:relative;overflow:hidden;background-size:cover;background-position:center}
 .ept-thumb-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff}
 .ept-muscle{font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text3);line-height:1.25}
@@ -14766,13 +14772,15 @@ function seccionPlanEntreno(c){
         </div>` : '';
       return `<div class="ept-card">
         ${thumb}
-        <div style="flex:1;min-width:0">
+        <div class="ept-cmain">
           <div class="ept-muscle">${muscle ? escHtml(muscle) : '&nbsp;'}</div>
           <div class="ept-exname">${escHtml(ej.name || 'Ejercicio')}</div>
         </div>
-        <div style="text-align:center;min-width:44px"><div class="ept-stat-lbl">Series</div><div class="ept-stat-val">${setsVal}</div></div>
-        <div style="text-align:center;min-width:52px"><div class="ept-stat-lbl">Reps</div><div class="ept-stat-val" style="font-size:16px">${escHtml(ej.reps || '—')}</div></div>
-        <div style="text-align:center;min-width:84px"><div class="ept-stat-lbl">Rest / RPE</div><div class="ept-stat-val" style="font-size:13.5px">${fmtDescanso(ej.rest_sec)} / —</div></div>
+        <div class="ept-stats">
+          <div class="ept-stat"><div class="ept-stat-lbl">Series</div><div class="ept-stat-val">${setsVal}</div></div>
+          <div class="ept-stat"><div class="ept-stat-lbl">Reps</div><div class="ept-stat-val" style="font-size:15px;white-space:nowrap">${escHtml(ej.reps || '—')}</div></div>
+          <div class="ept-stat"><div class="ept-stat-lbl">Rest / RPE</div><div class="ept-stat-val" style="font-size:13.5px;white-space:nowrap">${fmtDescanso(ej.rest_sec)} / —</div></div>
+        </div>
         ${accionesEj}
       </div>`;
     }).join('');
@@ -14780,33 +14788,21 @@ function seccionPlanEntreno(c){
     const focus = [...new Set(lista.map(e => (e.muscle_group || '').toString().trim()).filter(Boolean))]
       .slice(0, 2).join(' & ').toUpperCase();
     const exVacio = `<div style="background:var(--bg);border:1.5px dashed var(--border2);border-radius:14px;padding:26px 18px;text-align:center;color:var(--text3);font-size:13px;line-height:1.6">
-        Esta sesión aún no tiene ejercicios.<br>Añádelos desde la <strong style="color:var(--text2)">Librería</strong> de la derecha.</div>`;
+        Esta sesión aún no tiene ejercicios.<br>Añádelos con <strong style="color:var(--text2)">Añadir ejercicio</strong> o desde la <strong style="color:var(--text2)">Biblioteca</strong>.</div>`;
     sesionesHtml = `
       <div class="ept-exhead">
         <span class="ept-exh-ttl">Ejercicios: ${escHtml(tipoSel)}</span>
         ${focus ? `<span class="ept-pill">${escHtml(focus)}</span>` : ''}
         <button class="ept-genai" onclick="abrirGenerarRutinaIAModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> Generar con IA</button>
+        <button class="ept-aiopt" onclick="abrirAIOptimizerModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> AI Optimizer</button>
         <button class="ept-addex" onclick="abrirAddExerciseModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg> Añadir ejercicio</button>
         ${lista.length ? `<button class="ept-addex" style="margin-left:auto" onclick="guardarSesionComoPlantilla()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar como plantilla</button>` : ''}
       </div>
       ${lista.length ? filas : exVacio}`;
   }
 
-  // ── Barra lateral: AI Optimizer + Librería ──
-  const tipoSelSide = (tiposSesion && tiposSesion.length) ? tiposSesion[Math.min(editSesionEntreno, tiposSesion.length - 1)] : '';
-  const prioridadOpts = ['Sin prioridad', 'Pecho', 'Espalda', 'Piernas', 'Hombros', 'Brazos', 'Glúteos']
-    .map(o => `<option>${o}</option>`).join('');
-  const sidebarHtml = `
-    <div class="ept-side">
-      <div class="ept-side-ttl"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> AI Optimizer</div>
-      <div class="ept-side-sub">Ajustar volumen e intensidad basado en el feedback histórico del cliente.</div>
-      <div class="ept-side-lbl">Modalidad</div>
-      <select class="ept-select"><option>Mantener Volumen Actual</option><option>Aumentar Volumen</option><option>Reducir Volumen</option><option>Semana de descarga (Deload)</option></select>
-      <div class="ept-side-lbl">Prioridad Muscular</div>
-      <select class="ept-select">${prioridadOpts}</select>
-      <button class="ept-side-btn" onclick="showToast('El optimizador de rutina con IA todavía no está disponible.')">Optimizar Rutina</button>
-    </div>
-    <div id="ept-libreria">${selectorEjercicioHtml(tipoSelSide)}</div>`;
+  // ── AI Optimizer ahora es un pop-up (botón en la cabecera de ejercicios) ──
+  // (la lógica vive en abrirAIOptimizerModal; aquí no se renderiza barra lateral)
 
   // Badge "Cambia el [fecha]" si hay plan futuro programado
   const schedTrainBadge = c._scheduledTrainingDate
@@ -14840,10 +14836,7 @@ function seccionPlanEntreno(c){
     <div class="ept-hr"></div>
     ${splitHtml}
     <div class="ept-hr"></div>
-    <div class="ept-grid">
-      <div data-section="ejercicios-por-sesion" style="min-width:0">${sesionesHtml}</div>
-      <div>${sidebarHtml}</div>
-    </div>
+    <div data-section="ejercicios-por-sesion">${sesionesHtml}</div>
   </div>`;
 }
 
@@ -17491,6 +17484,27 @@ function renderGenRutinaModal(){
       <button class="gri-cancel" onclick="griClose()">Cancelar</button>
       <button class="gri-confirm" onclick="griConfirmar()">Confirmar Selección</button>
     </div>
+  </div>`;
+}
+
+// ── Modal: AI Optimizer (pop-up desde la cabecera de ejercicios) ──
+function abrirAIOptimizerModal(){
+  let modal=document.getElementById('modal-ai-opt');
+  if(!modal){ modal=document.createElement('div'); modal.id='modal-ai-opt'; modal.className='modal-overlay'; document.body.appendChild(modal); }
+  modal.style.display='flex';
+  modal.onclick=(e)=>{ if(e.target===modal) modal.style.display='none'; };
+  const prioridad=['Sin prioridad','Pecho','Espalda','Piernas','Hombros','Brazos','Glúteos'].map(o=>`<option>${o}</option>`).join('');
+  modal.innerHTML=`<div class="modal-box aio-box">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+      <div style="display:flex;align-items:center;gap:9px"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg><span style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--text)">AI Optimizer</span></div>
+      <button onclick="document.getElementById('modal-ai-opt').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px">✕</button>
+    </div>
+    <div class="ept-side-sub" style="margin-bottom:20px">Ajustar volumen e intensidad basado en el feedback histórico del cliente.</div>
+    <div class="ept-side-lbl">Modalidad</div>
+    <select class="ept-select"><option>Mantener Volumen Actual</option><option>Aumentar Volumen</option><option>Reducir Volumen</option><option>Semana de descarga (Deload)</option></select>
+    <div class="ept-side-lbl">Prioridad Muscular</div>
+    <select class="ept-select">${prioridad}</select>
+    <button class="ept-side-btn" onclick="showToast('El optimizador de rutina con IA todavía no está disponible.')">Optimizar Rutina</button>
   </div>`;
 }
 
