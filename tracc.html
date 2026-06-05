@@ -311,20 +311,30 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM San
 .ept-day-name{font-size:14px;font-weight:700;color:var(--text);margin-top:6px;line-height:1.15}
 .ept-day.off .ept-day-name{color:var(--text3)}
 .ept-day-tag{font-family:'Geist Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.1em;color:var(--green);margin-top:6px}
-.ept-exhead{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-bottom:16px}
+.ept-exhead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.ept-exh-left{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.ept-exh-actions{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.ept-exh-tpl{display:flex;gap:12px}
+.ept-addrow{width:100%;height:50px;border:1.5px dashed var(--border2);border-radius:14px;background:var(--bg2);color:var(--text2);font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px}
+.ept-addrow:hover{border-color:var(--green);color:var(--green)}
+.ept-menu{position:relative;display:inline-block}
+.ept-menu>summary{list-style:none}
+.ept-menu>summary::-webkit-details-marker{display:none}
+.ept-menu>summary::marker{content:''}
+.ept-menu-pop{position:absolute;top:34px;left:0;z-index:30;background:var(--bg2);border:1.5px solid var(--border);border-radius:11px;box-shadow:0 12px 32px rgba(0,0,0,.14);padding:6px;min-width:200px;display:flex;flex-direction:column}
+.ept-menu-pop button{display:flex;align-items:center;gap:9px;width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:9px 11px;border-radius:8px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif}
+.ept-menu-pop button:hover{background:var(--bg3)}
 .ept-exh-ttl{font-family:'DM Serif Display',serif;font-size:20px;color:var(--text)}
 .ept-pill{background:var(--gm);color:#0a3d1c;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
 .ept-genai{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 17px;border:none;border-radius:11px;background:#1c1b1b;color:#fff;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;cursor:pointer}
 .ept-addex{display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;color:var(--text2);font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif}
 .ept-grid{display:grid;grid-template-columns:1fr 330px;gap:20px;align-items:start}
 @media(max-width:920px){.ept-grid{grid-template-columns:1fr}}
-.ept-card{display:flex;align-items:center;gap:16px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:15px 17px;margin-bottom:13px}
-.ept-cmain{flex:1;min-width:0}
-.ept-stats{display:flex;align-items:center;gap:30px;flex-shrink:0}
+.ept-card{display:grid;grid-template-columns:72px minmax(0,1fr) 56px 205px 80px 104px;align-items:center;gap:18px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:14px 18px;margin-bottom:12px}
+.ept-cmain{min-width:0}
 .ept-stat{text-align:center}
-@media(max-width:680px){.ept-stats{gap:14px}}
-.ept-aiopt{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 16px;border:1.5px solid var(--green);border-radius:11px;background:var(--bg2);color:var(--green);font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}
-.modal-box.aio-box{max-width:460px;width:100%;padding:28px;display:flex;flex-direction:column}
+.ept-acts{display:flex;align-items:center;justify-content:flex-end;gap:2px}
+@media(max-width:900px){.ept-card{grid-template-columns:64px minmax(0,1fr) 50px 170px 70px 96px;gap:12px}}
 .ept-thumb{width:72px;height:58px;border-radius:11px;background:#1c1b1b;flex-shrink:0;position:relative;overflow:hidden;background-size:cover;background-position:center}
 .ept-thumb-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff}
 .ept-muscle{font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text3);line-height:1.25}
@@ -14765,22 +14775,20 @@ function seccionPlanEntreno(c){
       const setsVal = (ej.sets != null && ej.sets !== '') ? String(ej.sets).padStart(2, '0') : '—';
       const muscle = (ej.muscle_group || ej.session_type || '').toString().toUpperCase();
       const accionesEj = ej.id ? `
-        <div style="display:flex;align-items:center;gap:2px;flex-shrink:0">
+        <div class="ept-acts">
           <button class="ept-iconbtn" onclick="abrirEditExerciseDrawer('${escHtml(ej.id)}')" title="Editar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
           <button class="ept-iconbtn" style="color:var(--red)" onclick="quitarEjercicio('${escHtml(ej.id)}')" title="Quitar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
-          <button class="ept-iconbtn" onclick="pegarLinkVideo('${escHtml(ej.id)}')" title="${ej.video_url ? 'Editar vídeo' : 'Añadir vídeo'}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button>
-        </div>` : '';
+          <button class="ept-iconbtn" onclick="pegarLinkVideo('${escHtml(ej.id)}')" title="${ej.video_url ? 'Editar vídeo' : 'Añadir vídeo'}"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg></button>
+        </div>` : '<div class="ept-acts"></div>';
       return `<div class="ept-card">
         ${thumb}
         <div class="ept-cmain">
           <div class="ept-muscle">${muscle ? escHtml(muscle) : '&nbsp;'}</div>
           <div class="ept-exname">${escHtml(ej.name || 'Ejercicio')}</div>
         </div>
-        <div class="ept-stats">
-          <div class="ept-stat"><div class="ept-stat-lbl">Series</div><div class="ept-stat-val">${setsVal}</div></div>
-          <div class="ept-stat"><div class="ept-stat-lbl">Reps</div><div class="ept-stat-val" style="font-size:15px;white-space:nowrap">${escHtml(ej.reps || '—')}</div></div>
-          <div class="ept-stat"><div class="ept-stat-lbl">Rest / RPE</div><div class="ept-stat-val" style="font-size:13.5px;white-space:nowrap">${fmtDescanso(ej.rest_sec)} / —</div></div>
-        </div>
+        <div class="ept-stat"><div class="ept-stat-lbl">Series</div><div class="ept-stat-val">${setsVal}</div></div>
+        <div class="ept-stat"><div class="ept-stat-lbl">Reps</div><div class="ept-stat-val" style="font-size:15px;white-space:nowrap">${escHtml(ej.reps || '—')}</div></div>
+        <div class="ept-stat"><div class="ept-stat-lbl">Rest</div><div class="ept-stat-val" style="font-size:14px;white-space:nowrap">${fmtDescanso(ej.rest_sec)}</div></div>
         ${accionesEj}
       </div>`;
     }).join('');
@@ -14791,18 +14799,21 @@ function seccionPlanEntreno(c){
         Esta sesión aún no tiene ejercicios.<br>Añádelos con <strong style="color:var(--text2)">Añadir ejercicio</strong> o desde la <strong style="color:var(--text2)">Biblioteca</strong>.</div>`;
     sesionesHtml = `
       <div class="ept-exhead">
-        <span class="ept-exh-ttl">Ejercicios: ${escHtml(tipoSel)}</span>
-        ${focus ? `<span class="ept-pill">${escHtml(focus)}</span>` : ''}
-        <button class="ept-genai" onclick="abrirGenerarRutinaIAModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> Generar con IA</button>
-        <button class="ept-aiopt" onclick="abrirAIOptimizerModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> AI Optimizer</button>
-        <button class="ept-addex" onclick="abrirAddExerciseModal()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg> Añadir ejercicio</button>
-        ${lista.length ? `<button class="ept-addex" style="margin-left:auto" onclick="guardarSesionComoPlantilla()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar como plantilla</button>` : ''}
+        <div class="ept-exh-left">
+          <span class="ept-exh-ttl">Ejercicios: ${escHtml(tipoSel)}</span>
+          ${focus ? `<span class="ept-pill">${escHtml(focus)}</span>` : ''}
+        </div>
+        <div class="ept-exh-actions">
+          <button class="ept-genai" onclick="abrirGenerarRutinaIAModal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg> Generar con IA</button>
+          <div class="ept-exh-tpl">
+            <button class="ept-addex" onclick="guardarSesionComoPlantilla()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar plantilla</button>
+            <button class="ept-addex" onclick="abrirPlantillas()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Buscar plantilla</button>
+          </div>
+        </div>
       </div>
-      ${lista.length ? filas : exVacio}`;
+      ${lista.length ? filas : exVacio}
+      <button class="ept-addrow" onclick="abrirAddExerciseModal()"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg> Añadir ejercicio</button>`;
   }
-
-  // ── AI Optimizer ahora es un pop-up (botón en la cabecera de ejercicios) ──
-  // (la lógica vive en abrirAIOptimizerModal; aquí no se renderiza barra lateral)
 
   // Badge "Cambia el [fecha]" si hay plan futuro programado
   const schedTrainBadge = c._scheduledTrainingDate
@@ -14815,17 +14826,25 @@ function seccionPlanEntreno(c){
       <div style="min-width:0">
         <div class="ept-title">Plan de Entrenamiento Detallado</div>
         <div class="ept-sub">Cliente: <strong style="color:var(--text);font-weight:700">${escHtml(c.name || '—')}</strong>${mesoName ? ` · ${escHtml(mesoName)}` : ''}</div>
-        <div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:13px;align-items:center">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:13px;align-items:center">
           <input type="file" id="import-ex-input" accept=".xlsx,.xls,.csv" style="display:none" onchange="importarEjerciciosExcel(this)">
           <button class="ept-toolbtn" onclick="abrirMesociclo()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> ${etiquetaBotonMeso(c)}</button>
-          ${(!editandoBorradorPlan && !c._scheduledTrainingDate)
-            ? `<button class="ept-toolbtn" onclick="abrirModalProgramarCambio('train')" title="Crear un borrador del plan que se activará en una fecha futura"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Programar cambio</button>` : ''}
           ${(!editandoBorradorPlan && c._scheduledTrainingDate)
             ? `<button class="ept-toolbtn" style="border-color:#fde68a;background:#fffbeb;color:#92400e" onclick="entrarBorradorExistente('train')" title="Editar el borrador programado"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Editar borrador</button>` : ''}
-          <button class="ept-toolbtn" onclick="abrirPlantillas()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="4" width="8" height="4" rx="1"/><path d="M8 6H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2"/></svg> Plantillas</button>
-          <button class="ept-toolbtn" onclick="descargarPlantillaEjercicios()" title="Descargar plantilla Excel"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8ZM14 2v6h6"/></svg> Plantilla Excel</button>
-          <button class="ept-toolbtn" onclick="document.getElementById('import-ex-input').click()" title="Importar Excel/CSV"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2Z"/></svg> Importar</button>
-          <button class="ept-toolbtn" onclick="guardarPlanComoPlantilla()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar plan completo</button>
+          <details class="ept-menu">
+            <summary class="ept-toolbtn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8ZM14 2v6h6"/></svg> Excel <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="ept-menu-pop">
+              <button onclick="this.closest('details').removeAttribute('open');descargarPlantillaEjercicios()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Descargar plantilla</button>
+              <button onclick="this.closest('details').removeAttribute('open');document.getElementById('import-ex-input').click()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Importar archivo</button>
+            </div>
+          </details>
+          <details class="ept-menu">
+            <summary class="ept-toolbtn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="4" width="8" height="4" rx="1"/><path d="M8 6H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2"/></svg> Plantillas <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="ept-menu-pop">
+              <button onclick="this.closest('details').removeAttribute('open');abrirPlantillas()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Buscar plantilla</button>
+              <button onclick="this.closest('details').removeAttribute('open');guardarPlanComoPlantilla()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg> Guardar plan completo</button>
+            </div>
+          </details>
           ${schedTrainBadge}
         </div>
       </div>
@@ -14837,6 +14856,10 @@ function seccionPlanEntreno(c){
     ${splitHtml}
     <div class="ept-hr"></div>
     <div data-section="ejercicios-por-sesion">${sesionesHtml}</div>
+    <div class="np-footer" style="justify-content:flex-end">
+      <button class="np-prog" onclick="abrirModalProgramarCambio('train')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Programar cambio</button>
+      <button class="np-save-send" onclick="guardarPlanEntrenoEnviar()">Guardar Cambios &amp; Enviar</button>
+    </div>
   </div>`;
 }
 
@@ -16932,6 +16955,14 @@ function guardarPlanNutriEnviar(){
   showToast('✓ Plan guardado · el cliente será notificado');
 }
 
+// Guardar y enviar el plan de ENTRENO al cliente (espejo del de nutrición)
+function guardarPlanEntrenoEnviar(){
+  const c=currentClient; if(!c) return;
+  const plan=c._training&&c._training.plan;
+  if(plan&&plan.id){ sb.from('training_plans').update({seen_by_client:false}).eq('id',plan.id).then(()=>{},()=>{}); }
+  showToast('✓ Plan de entreno guardado · el cliente será notificado');
+}
+
 // ── Cronograma de Comidas (rediseño · reutiliza edición/guardado existentes) ──
 function renderCronogramaComidas(c){
   const nut=c&&c._nutrition;
@@ -17484,27 +17515,6 @@ function renderGenRutinaModal(){
       <button class="gri-cancel" onclick="griClose()">Cancelar</button>
       <button class="gri-confirm" onclick="griConfirmar()">Confirmar Selección</button>
     </div>
-  </div>`;
-}
-
-// ── Modal: AI Optimizer (pop-up desde la cabecera de ejercicios) ──
-function abrirAIOptimizerModal(){
-  let modal=document.getElementById('modal-ai-opt');
-  if(!modal){ modal=document.createElement('div'); modal.id='modal-ai-opt'; modal.className='modal-overlay'; document.body.appendChild(modal); }
-  modal.style.display='flex';
-  modal.onclick=(e)=>{ if(e.target===modal) modal.style.display='none'; };
-  const prioridad=['Sin prioridad','Pecho','Espalda','Piernas','Hombros','Brazos','Glúteos'].map(o=>`<option>${o}</option>`).join('');
-  modal.innerHTML=`<div class="modal-box aio-box">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
-      <div style="display:flex;align-items:center;gap:9px"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg><span style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--text)">AI Optimizer</span></div>
-      <button onclick="document.getElementById('modal-ai-opt').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px">✕</button>
-    </div>
-    <div class="ept-side-sub" style="margin-bottom:20px">Ajustar volumen e intensidad basado en el feedback histórico del cliente.</div>
-    <div class="ept-side-lbl">Modalidad</div>
-    <select class="ept-select"><option>Mantener Volumen Actual</option><option>Aumentar Volumen</option><option>Reducir Volumen</option><option>Semana de descarga (Deload)</option></select>
-    <div class="ept-side-lbl">Prioridad Muscular</div>
-    <select class="ept-select">${prioridad}</select>
-    <button class="ept-side-btn" onclick="showToast('El optimizador de rutina con IA todavía no está disponible.')">Optimizar Rutina</button>
   </div>`;
 }
 
