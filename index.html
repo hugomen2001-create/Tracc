@@ -5994,6 +5994,7 @@ function marcarRevision(clientId) {
 // ── MAIN PANEL ────────────────────────────────────────────────────────────
 function renderClientPanel() {
   const c = currentClient;
+  const _csY = (document.getElementById('main-panel')||{}).scrollTop || 0;
 
   // Coach sin ningún cliente seleccionado (p.ej. entrenador nuevo sin clientes)
   if (!c) {
@@ -6093,6 +6094,7 @@ function renderClientPanel() {
     </div>`}`;
   if(clientView==='evolucion'){ renderEvoDetalle(); }
   else if(clientView==='revision'){ renderRevisionDetalle(); }
+  try{ var _mpRC=document.getElementById('main-panel'); if(_mpRC) _mpRC.scrollTop=_csY; }catch(e){}
 }
 
 function _navSel(el){ try{ document.querySelectorAll('.tz-navitem').forEach(n=>n.classList.remove('active')); el.classList.add('active'); }catch(e){} }
@@ -12688,6 +12690,7 @@ function pagosTogglePagado(id){
   (async()=>{ try{ const {error}=await sb.from('client_billing').update({paid_numbers:paid, updated_at:new Date().toISOString()}).eq('client_id',c.id); if(error){ console.error('pagosTogglePagado:',error); showToast('✕ No se pudo actualizar el pago'); } }catch(e){ console.error(e); } })();
 }
 function renderPagosPanel(){
+  const _pgY=(document.querySelector('#main-panel .vg-body')||{}).scrollTop||0;
   const esActivo = c => !(c._raw && c._raw.active===false);
   const activos = CLIENTS.filter(esActivo);
   const cancelados = CLIENTS.filter(c => c._raw && c._raw.active===false);
@@ -12783,6 +12786,7 @@ function renderPagosPanel(){
       <div style="font-size:12.5px;color:var(--text3);margin-top:14px">Mostrando ${pool.length} de ${activos.length} cliente${activos.length===1?'':'s'} activos</div>
       ${stripeBanner}
     </div></div>`;
+  try{ var _vbPG=document.querySelector('#main-panel .vg-body'); if(_vbPG) _vbPG.scrollTop=_pgY; }catch(e){}
 }
 
 // Panel "Mi plan" (suscripción del entrenador con la plataforma)
@@ -12832,6 +12836,7 @@ function irAlPagoMiPlan(){
   showToast('El pago con tarjeta estará disponible muy pronto. Mientras, escríbenos y lo activamos.');
 }
 function _renderPlanPanelBody(){
+  const _psY=(document.querySelector('#main-panel .vg-body')||{}).scrollTop||0;
   if(_coachPlan===undefined){
     document.getElementById('main-panel').innerHTML = `
       <div class="vg-header"><div><div class="vg-title">Mi plan</div><div class="vg-date">Elige tu plan</div></div></div>
@@ -12970,6 +12975,7 @@ function _renderPlanPanelBody(){
   document.getElementById('main-panel').innerHTML = `
     <div class="vg-header"><div><div class="vg-title">Mi plan</div><div class="vg-date">Gestiona tu suscripción, plan y extras</div></div></div>
     <div class="vg-body">${body}</div>`;
+  try{ var _vbPP=document.querySelector('#main-panel .vg-body'); if(_vbPP) _vbPP.scrollTop=_psY; }catch(e){}
 }
 
 // Genera las alertas de un cliente para el panel de la vista general.
@@ -16751,11 +16757,30 @@ async function iaBorrarPlantilla(id){
 }
 
 // ── Generación (botones separados por bloque) ─────────────────────────────
+// Overlay central "Generando…" mientras la IA trabaja
+function iaOverlay(show, texto){
+  let ov=document.getElementById('ia-loading-overlay');
+  if(show){
+    if(!document.getElementById('ia-spin-style')){ const st=document.createElement('style'); st.id='ia-spin-style'; st.textContent='@keyframes iaspin{to{transform:rotate(360deg)}}'; document.head.appendChild(st); }
+    if(!ov){
+      ov=document.createElement('div'); ov.id='ia-loading-overlay';
+      ov.style.cssText='position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(15,18,16,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)';
+      ov.innerHTML='<div style="background:#fff;border-radius:18px;padding:30px 38px;display:flex;flex-direction:column;align-items:center;gap:15px;box-shadow:0 20px 50px rgba(0,0,0,.3);max-width:300px;text-align:center">'+
+        '<div style="width:42px;height:42px;border:4px solid #ece9f5;border-top-color:#7c3aed;border-radius:50%;animation:iaspin .8s linear infinite"></div>'+
+        '<div id="ia-loading-text" style="font-size:15px;font-weight:700;color:#1a1a18;font-family:\'DM Sans\',sans-serif"></div>'+
+        '<div style="font-size:12px;color:#8a8a83;line-height:1.4;font-family:\'DM Sans\',sans-serif">La IA está trabajando, puede tardar unos segundos.</div>'+
+      '</div>';
+      document.body.appendChild(ov);
+    }
+    ov.style.display='flex';
+    const t=document.getElementById('ia-loading-text'); if(t) t.textContent=texto||'Generando…';
+  } else if(ov){ ov.remove(); }
+}
 async function iaGenerarDieta(){
   const c = currentClient; if(!c) return;
   await _iaSyncMacros(c);
   IA.generandoDieta=true; IA.propDieta=null; IA.dietaAplicado=false;
-  renderClientPanel();
+  renderClientPanel(); iaOverlay(true,'Generando dieta…');
   try{
     const ctx = _iaContexto(c,'dieta');
     const nQuiere = Math.max(1, Math.min(7, parseInt(IA.numOpcionesDieta)||7));
@@ -16767,7 +16792,7 @@ async function iaGenerarDieta(){
     const sat=/high demand|overloaded|unavailable|429|503|temporar/i.test(e.message||'');
     showToast(sat?'Gemini está saturado ahora mismo. Espera 1-2 min y vuelve a darle a Generar dieta.':'La dieta falló: '+(e.message||'inténtalo de nuevo'));
   }
-  finally{ IA.generandoDieta=false; renderClientPanel(); }
+  finally{ IA.generandoDieta=false; iaOverlay(false); renderClientPanel(); }
 }
 // completa las opciones que falten SIN borrar las que ya tienes
 async function iaCompletarDieta(){
@@ -16775,7 +16800,7 @@ async function iaCompletarDieta(){
   const previas = IA.propDieta.opciones||[];
   const objetivo = Math.max(1, Math.min(7, parseInt(IA.numOpcionesDieta)||7));
   if(previas.length>=objetivo){ showToast(`Ya tienes las ${objetivo} opciones`); return; }
-  IA.generandoDieta=true; renderClientPanel();
+  IA.generandoDieta=true; renderClientPanel(); iaOverlay(true,'Completando dieta…');
   const antes = previas.length;
   try{
     const ctx = _iaContexto(c,'dieta');
@@ -16789,7 +16814,7 @@ async function iaCompletarDieta(){
     const sat=/high demand|overloaded|unavailable|429|503|temporar/i.test(e.message||'');
     showToast(sat?'Gemini sigue saturado. Espera 1-2 min y pulsa otra vez.':'No se pudieron añadir más: '+(e.message||''));
   }
-  finally{ IA.generandoDieta=false; renderClientPanel(); }
+  finally{ IA.generandoDieta=false; iaOverlay(false); renderClientPanel(); }
 }
 // ── Selección de qué sesiones del split generar con IA ──
 // Devuelve los días de entreno (no OFF) del split actual: [{i, tipo, lbl}]
@@ -16840,7 +16865,7 @@ async function iaGenerarEntreno(){
   const c = currentClient; if(!c) return;
   if(!IA.splitDraft || !IA.splitDraft.some(d=>d.tipo!=='OFF')){ showToast('Marca al menos un día de entreno en el split'); return; }
   IA.generandoEntreno=true; IA.propEntreno=null; IA.entrenoAplicado=false;
-  renderClientPanel();
+  renderClientPanel(); iaOverlay(true,'Generando entreno…');
   try{
     const ctx = _iaContexto(c,'entreno');
     IA.propEntreno = await _iaGenerarEntreno(c, ctx); IA.filtroDia='todos';
@@ -16850,7 +16875,7 @@ async function iaGenerarEntreno(){
     const sat=/high demand|overloaded|unavailable|429|503|temporar/i.test(e.message||'');
     showToast(sat?'Gemini está saturado ahora mismo. Espera 1-2 min y vuelve a darle a Generar entreno.':'El entreno falló: '+(e.message||'inténtalo de nuevo'));
   }
-  finally{ IA.generandoEntreno=false; renderClientPanel(); }
+  finally{ IA.generandoEntreno=false; iaOverlay(false); renderClientPanel(); }
 }
 
 // sincroniza los macros editados en el bloque dieta con el plan nutricional (Supabase)
